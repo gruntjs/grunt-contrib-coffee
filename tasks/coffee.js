@@ -13,10 +13,10 @@ module.exports = function(grunt) {
   // TODO: ditch this when grunt v0.4 is released
   grunt.util = grunt.util || grunt.utils;
 
-  var _ = grunt.util._;
-  var helpers = require('grunt-contrib-lib').init(grunt);
-
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
+
+    var _ = grunt.util._;
+    var helpers = require('grunt-contrib-lib').init(grunt);
     var options = helpers.options(this);
 
     grunt.verbose.writeflags(options, 'Options');
