@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      test: ['tmp']
+      test: ['tmp','tmp_dir']
     },
 
     // Configuration to be run (and then tested).
@@ -43,10 +43,13 @@ module.exports = function(grunt) {
       compile: {
         files: {
           'tmp/coffee_basic.js': ['test/fixtures/coffee_basic.coffee'],
-          'tmp/coffee_combined.js': ['test/fixtures/*.coffee']
+          'tmp/coffee_combined.js': ['test/fixtures/*.coffee'],
+          'tmp_dir': ['test/fixtures/**/*.coffee']
         },
         options: {
-          bare: true
+          bare: true,
+          preserveDirs: true,
+          basePath: 'test/fixtures'
         }
       }
     },
