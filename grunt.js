@@ -40,13 +40,22 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     coffee: {
+      options: {
+        bare: true
+      },
       compile: {
         files: {
-          'tmp/coffee_basic.js': ['test/fixtures/coffee_basic.coffee'],
-          'tmp/coffee_combined.js': ['test/fixtures/*.coffee']
+          'tmp/coffee.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/concat.js': ['test/fixtures/*.coffee'],
+          'tmp/individual/*.js': ['test/fixtures/*.coffee', 'test/fixtures/level2/*.coffee']
+        }
+      },
+      flatten: {
+        files: {
+          'tmp/individual_flatten/*.js': ['test/fixtures/*.coffee', 'test/fixtures/level2/*.coffee']
         },
         options: {
-          bare: true
+          flatten: true
         }
       }
     },

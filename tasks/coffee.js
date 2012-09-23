@@ -13,47 +13,72 @@ module.exports = function(grunt) {
   // TODO: ditch this when grunt v0.4 is released
   grunt.util = grunt.util || grunt.utils;
 
-  grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
+  var path = require('path');
 
-    var _ = grunt.util._;
+  // TODO: remove if/when we officially drop node <= 0.7.9
+  path.sep = path.sep || path.normalize('/');
+
+  grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var helpers = require('grunt-contrib-lib').init(grunt);
-    var options = helpers.options(this);
+
+    var options = helpers.options(this, {
+      bare: false,
+      basePath: false,
+      flatten: false
+    });
 
     grunt.verbose.writeflags(options, 'Options');
 
     // TODO: ditch this when grunt v0.4 is released
     this.files = this.files || helpers.normalizeMultiTaskFiles(this.data, this.target);
 
+    var basePath;
+    var newFileDest;
+
     var srcFiles;
+    var srcCompiled;
     var taskOutput;
-    var sourceCode;
-    var sourceCompiled;
-    var helperOptions;
 
     this.files.forEach(function(file) {
+      file.dest = path.normalize(file.dest);
       srcFiles = grunt.file.expandFiles(file.src);
+
+      if (srcFiles.length === 0) {
+        grunt.fail.warn('Unable to compile; no valid source files were found.');
+      }
 
       taskOutput = [];
 
       srcFiles.forEach(function(srcFile) {
-        helperOptions = _.extend({filename: srcFile}, options);
-        sourceCode = grunt.file.read(srcFile);
+        srcCompiled = compileCoffee(srcFile, options);
 
-        sourceCompiled = compileCoffee(sourceCode, helperOptions);
+        if (helpers.isIndividualDest(file.dest)) {
+          basePath = helpers.findBasePath(srcFiles, options.basePath);
+          newFileDest = helpers.buildIndividualDest(file.dest, srcFile, basePath, options.flatten);
 
-        taskOutput.push(sourceCompiled);
+          grunt.file.write(newFileDest, srcCompiled || '');
+          grunt.log.writeln('File ' + newFileDest.cyan + ' created.');
+        } else {
+          taskOutput.push(srcCompiled);
+        }
       });
 
       if (taskOutput.length > 0) {
-        grunt.file.write(file.dest, taskOutput.join('\n'));
-        grunt.log.writeln('File ' + file.dest + ' created.');
+        grunt.file.write(file.dest, taskOutput.join('\n') || '');
+        grunt.log.writeln('File ' + file.dest.cyan + ' created.');
       }
     });
   });
 
-  var compileCoffee = function(coffeescript, options) {
+  var compileCoffee = function(srcFile, options) {
+    options = grunt.util._.extend({filename: srcFile}, options);
+    delete options.basePath;
+    delete options.flatten;
+
+    var srcCode = grunt.file.read(srcFile);
+
     try {
-      return require('coffee-script').compile(coffeescript, options);
+      return require('coffee-script').compile(srcCode, options);
     } catch (e) {
       grunt.log.error(e);
       grunt.fail.warn('CoffeeScript failed to compile.');

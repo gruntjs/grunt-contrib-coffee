@@ -13,7 +13,7 @@ This defines what files this task will process and should contain key:value pair
 
 The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/cowboy/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
 
-Note: When the value contains an array of multiple filepaths, the contents are concatenated in the order passed.
+As of v0.2.1, you can use *.{ext} as your destination filename to individually compile each file to the destination directory. Otherwise, when the source contains an array of multiple filepaths, the contents are concatenated in the order passed.
 
 ##### options ```object```
 
@@ -25,22 +25,37 @@ This controls how this task (and its helpers) operate and should contain key:val
 
 Compile the JavaScript without the top-level function safety wrapper.
 
+##### basePath ```string``` (individual only)
+
+This option adjusts the folder structure when compiled to the destination directory. When not explicitly set, best effort is made to locate the basePath by comparing all source filepaths left to right for a common pattern.
+
+##### flatten ```boolean``` (individual only)
+
+This option performs a flat compile that dumps all the files into the root of the destination directory, overwriting files if they exist.
+
 #### Config Example
 
 ``` javascript
 coffee: {
   compile: {
-    options: {
-      bare: true
-    },
     files: {
-      "path/to/result.js": "path/to/source.coffee",
-      "path/to/another.js": ["path/to/sources/*.coffee", "path/to/more/*.coffee"]
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'], // compile and concat into single file
+      'path/to/*.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile individually into dest, maintaining folder structure
+      }
+    },
+    flatten: {
+      options: {
+        flatten: true
+      },
+      files: {
+        'path/to/*.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile individually into dest, flattening folder structure
+      }
     }
-  }
 }
 ```
 
 ## Release History
 
-* 2012/08/10 - v0.2.0 - Refactored from grunt-contrib into individual repo.
+* 2012/09/24 - v0.2.1 - general cleanup and consolidation. test refactoring/
+* 2012/09/10 - v0.2.0 - refactored from grunt-contrib into individual repo.
