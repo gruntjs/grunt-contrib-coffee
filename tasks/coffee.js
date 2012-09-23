@@ -13,12 +13,9 @@ module.exports = function(grunt) {
   // TODO: ditch this when grunt v0.4 is released
   grunt.util = grunt.util || grunt.utils;
 
-  var path = require('path');
-
-  // TODO: remove if/when we officially drop node <= 0.7.9
-  path.sep = path.sep || path.normalize('/');
-
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
+    var path = require('path');
+
     var helpers = require('grunt-contrib-lib').init(grunt);
 
     var options = helpers.options(this, {
