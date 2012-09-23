@@ -45,50 +45,23 @@ module.exports = function(grunt) {
 
     var srcFiles,
       destPath,
-      sourceCode,
-      sourceCompiled,
       helperOptions;
 
     srcFiles = grunt.file.expandFiles(file.src);
 
     srcFiles.forEach(function(srcFile) {
-      // ======================
-      // The following segment is derived from https://github.com/avalade/grunt-coffee
-      // ======================
-      destPath = file.dest;
+      destPath = path.dirname(srcFile);
 
-      if( destPath && options.preserveDirs ){
-        var dirname = path.dirname(srcFile);
-        if ( options.basePath ) {
-          dirname = dirname.replace(new RegExp('^'+options.basePath), '');
-        }
-        destPath = path.join(destPath, dirname);
-      } else if( !destPath ){
-        destPath = path.dirname(srcFile);
+      if(options.basePath){
+        destPath = destPath.replace(new RegExp('^'+options.basePath), '');
       }
+      destPath = path.join(file.dest, destPath);
 
       var dest = path.join(destPath, path.basename(srcFile, '.coffee') + '.js');
 
-      // De-dup dest if we have .js.js
-      if (dest.match(/\.js\.js/)) {
-        dest = dest.replace(/\.js\.js/, ".js");
-      }
-
-      if (path.extname(srcFile) === '.js') {
-        grunt.file.copy(srcFile, dest);
-        return true;
-      }
-
-      if( options.bare !== false ) {
-        options.bare = true;
-      }
-
       helperOptions = _.extend({filename: srcFile}, options);
-      sourceCode = grunt.file.read(srcFile);
 
-      sourceCompiled = compileCoffee(sourceCode, helperOptions);
-
-      grunt.file.write(dest, sourceCompiled);
+      grunt.file.write(dest, compileCoffee(grunt.file.read(srcFile), helperOptions));
       grunt.log.writeln('File ' + dest + ' created.');
     });
   };

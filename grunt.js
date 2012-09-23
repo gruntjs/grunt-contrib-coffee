@@ -48,7 +48,6 @@ module.exports = function(grunt) {
         },
         options: {
           bare: true,
-          preserveDirs: true,
           basePath: 'test/fixtures'
         }
       }
