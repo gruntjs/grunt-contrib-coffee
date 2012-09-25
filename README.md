@@ -57,5 +57,6 @@ coffee: {
 
 ## Release History
 
+* 2012/10/xx - v0.3.1 - don't fail when there are no files.
 * 2012/09/24 - v0.3.0 - general cleanup and consolidation. test refactoring. global options depreciated.
 * 2012/09/10 - v0.2.0 - refactored from grunt-contrib into individual repo.

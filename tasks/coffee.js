@@ -41,7 +41,8 @@ module.exports = function(grunt) {
       srcFiles = grunt.file.expandFiles(file.src);
 
       if (srcFiles.length === 0) {
-        grunt.fail.warn('Unable to compile; no valid source files were found.');
+        grunt.log.writeln('Unable to compile; no valid source files were found.');
+        return;
       }
 
       taskOutput = [];
