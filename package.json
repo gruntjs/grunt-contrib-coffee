@@ -4,8 +4,8 @@
   "version": "0.3.1",
   "homepage": "https://github.com/gruntjs/grunt-contrib-coffee",
   "author": {
-    "name": "Eric Woroshow",
-    "url": "http://ericw.ca/"
+    "name": "Grunt Team",
+    "url": "http://gruntjs.com/"
   },
   "repository": {
     "type": "git",

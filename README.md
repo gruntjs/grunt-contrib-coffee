@@ -1,5 +1,6 @@
 # grunt-contrib-coffee [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-coffee)
-> Compile CoffeeScript files to JavaScript (part of the [grunt-contrib](https://github.com/gruntjs/grunt-contrib) collection). Submitted by [Eric Woroshow](https://github.com/errcw).
+
+> Compile CoffeeScript files to JavaScript.
 
 ### Overview
 
@@ -57,6 +58,10 @@ coffee: {
 
 ## Release History
 
-* 2012/09/25 - v0.3.1 - don't fail when there are no files.
-* 2012/09/24 - v0.3.0 - general cleanup and consolidation. test refactoring. global options depreciated.
-* 2012/09/10 - v0.2.0 - refactored from grunt-contrib into individual repo.
+* 2012/09/25 - v0.3.1 - Don't fail when there are no files.
+* 2012/09/24 - v0.3.0 - Global options depreciated.
+* 2012/09/10 - v0.2.0 - Refactored from grunt-contrib into individual repo.
+
+--
+
+Task submitted by [Eric Woroshow](https://github.com/errcw).
