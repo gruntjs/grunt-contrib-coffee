@@ -1,0 +1,12 @@
+v0.3.1:
+  date: 2012-09-25
+  changes:
+     - Don't fail when there are no files.
+v0.3.0:
+  date: 2012-09-24
+  changes:
+    - Global options depreciated.
+v0.2.0:
+  date: 2012-09-10
+  changes:
+    - Refactored from grunt-contrib into individual repo.

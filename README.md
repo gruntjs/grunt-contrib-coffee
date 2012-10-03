@@ -56,12 +56,6 @@ coffee: {
 }
 ```
 
-## Release History
-
-* 2012/09/25 - v0.3.1 - Don't fail when there are no files.
-* 2012/09/24 - v0.3.0 - Global options depreciated.
-* 2012/09/10 - v0.2.0 - Refactored from grunt-contrib into individual repo.
-
 --
 
-Task submitted by [Eric Woroshow](https://github.com/errcw).
+*Task submitted by [Eric Woroshow](https://github.com/errcw).*
