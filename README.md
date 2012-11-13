@@ -2,60 +2,38 @@
 
 > Compile CoffeeScript files to JavaScript.
 
-### Overview
+_Note that this plugin has not yet been released, and only works with the latest bleeding-edge, in-development version of grunt. See the [When will I be able to use in-development feature 'X'?](https://github.com/gruntjs/grunt/blob/devel/docs/faq.md#when-will-i-be-able-to-use-in-development-feature-x) FAQ entry for more information._
 
-Inside your `grunt.js` file add a section named `coffee`. This section specifies the files to compile and the options passed to [CoffeeScript](http://coffeescript.org/#usage).
+## Getting Started
+_If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide._
 
-#### Parameters
+From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
 
-##### files ```object```
-
-This defines what files this task will process and should contain key:value pairs.
-
-The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
-
-**Experimental** As of v0.3.0, you can use *.{ext} as your destination filename to individually compile each file to the destination directory. Otherwise, when the source contains an array of multiple filepaths, the contents are concatenated in the order passed.
-
-##### options ```object```
-
-This controls how this task (and its helpers) operate and should contain key:value pairs, see options below.
-
-#### Options
-
-##### bare ```boolean```
-
-Compile the JavaScript without the top-level function safety wrapper.
-
-##### basePath ```string``` (individual only)
-
-This option adjusts the folder structure when compiled to the destination directory. When not explicitly set, best effort is made to locate the basePath by comparing all source filepaths left to right for a common pattern.
-
-##### flatten ```boolean``` (individual only)
-
-This option performs a flat compile that dumps all the files into the root of the destination directory, overwriting files if they exist.
-
-#### Config Example
-
-``` javascript
-coffee: {
-  compile: {
-    files: {
-      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
-      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'], // compile and concat into single file
-      'path/to/*.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile individually into dest, maintaining folder structure
-      }
-    },
-    flatten: {
-      options: {
-        flatten: true
-      },
-      files: {
-        'path/to/*.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile individually into dest, flattening folder structure
-      }
-    }
-}
+```bash
+npm install grunt-contrib-coffee --save-dev
 ```
 
---
+Once that's done, add this line to your project's Gruntfile:
 
-*Task submitted by [Eric Woroshow](https://github.com/errcw).*
+```js
+grunt.loadNpmTasks('grunt-contrib-coffee');
+```
+
+If the plugin has been installed correctly, running `grunt --help` at the command line should list the newly-installed plugin's task or tasks. In addition, the plugin should be listed in package.json as a `devDependency`, which ensures that it will be installed whenever the `npm install` command is run.
+
+[grunt]: http://gruntjs.com/
+[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[package.json]: https://npmjs.org/doc/json.html
+
+
+## Release History
+
+ * 2012-10-11 - v0.3.2 - Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-09-24 - v0.3.1 - Don't fail when there are no files.
+ * 2012-09-23 - v0.3.0 - Global options depreciated.
+ * 2012-09-09 - v0.2.0 - Refactored from grunt-contrib into individual repo.
+
+--
+Task submitted by <a href="http://ericw.ca/">Eric Woroshow</a>.
+
+*Generated on Tue Nov 13 2012 15:36:20.*

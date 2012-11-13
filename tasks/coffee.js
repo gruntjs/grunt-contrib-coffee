@@ -9,12 +9,9 @@
 module.exports = function(grunt) {
   'use strict';
 
-  // TODO: ditch this when grunt v0.4 is released
-  grunt.util = grunt.util || grunt.utils;
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var path = require('path');
-
     var helpers = require('grunt-lib-contrib').init(grunt);
 
     var options = helpers.options(this, {
@@ -25,46 +22,37 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    // TODO: ditch this when grunt v0.4 is released
-    this.files = this.files || helpers.normalizeMultiTaskFiles(this.data, this.target);
+    var taskOutput = [];
+    var files = grunt.file.expandFiles(this.file.src);
+    var dest = this.file.dest;
 
-    var basePath;
-    var newFileDest;
+    if (files.length === 0) {
+      grunt.log.writeln('Unable to compile; no valid source files were found.');
+      return;
+    }
 
-    var srcFiles;
-    var srcCompiled;
-    var taskOutput;
+    // hack by chris to support compiling individual files
+    if (helpers.isIndividualDest(dest)) {
+      var basePath = helpers.findBasePath(files, options.basePath);
+    }
 
-    this.files.forEach(function(file) {
-      file.dest = path.normalize(file.dest);
-      srcFiles = grunt.file.expandFiles(file.src);
+    files.forEach(function(file) {
+      var srcCompiled = compileCoffee(file, options);
 
-      if (srcFiles.length === 0) {
-        grunt.log.writeln('Unable to compile; no valid source files were found.');
-        return;
-      }
+      if (basePath !== undefined) {
+        var newFileDest = helpers.buildIndividualDest(dest, file, basePath, options.flatten);
 
-      taskOutput = [];
-
-      srcFiles.forEach(function(srcFile) {
-        srcCompiled = compileCoffee(srcFile, options);
-
-        if (helpers.isIndividualDest(file.dest)) {
-          basePath = helpers.findBasePath(srcFiles, options.basePath);
-          newFileDest = helpers.buildIndividualDest(file.dest, srcFile, basePath, options.flatten);
-
-          grunt.file.write(newFileDest, srcCompiled || '');
-          grunt.log.writeln('File ' + newFileDest.cyan + ' created.');
-        } else {
-          taskOutput.push(srcCompiled);
-        }
-      });
-
-      if (taskOutput.length > 0) {
-        grunt.file.write(file.dest, taskOutput.join('\n') || '');
-        grunt.log.writeln('File ' + file.dest.cyan + ' created.');
+        grunt.file.write(newFileDest, srcCompiled || '');
+        grunt.log.writeln('File ' + newFileDest.cyan + ' created.');
+      } else {
+        taskOutput.push(srcCompiled);
       }
     });
+
+    if (taskOutput.length > 0) {
+      grunt.file.write(dest, taskOutput.join('\n') || '');
+      grunt.log.writeln('File ' + dest.cyan + ' created.');
+    }
   });
 
   var compileCoffee = function(srcFile, options) {

@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-coffee",
   "description": "Compile CoffeeScript files to JavaScript.",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "homepage": "https://github.com/gruntjs/grunt-contrib-coffee",
   "author": {
     "name": "Grunt Team",
@@ -32,8 +32,11 @@
     "grunt-lib-contrib": "~0.3.0"
   },
   "devDependencies": {
-    "grunt": "~0.3.15",
-    "grunt-contrib-clean": "~0.3.0"
+    "grunt-contrib-jshint": "0.1.0",
+    "grunt-contrib-nodeunit": "0.1.0",
+    "grunt-contrib-clean": "0.4.0a",
+    "grunt-contrib-internal": "*",
+    "grunt": "devel"
   },
   "keywords": [
     "gruntplugin"
