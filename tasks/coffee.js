@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     grunt.verbose.writeflags(options, 'Options');
 
     var taskOutput = [];
-    var files = grunt.file.expandFiles(this.file.src);
+    var files = this.file.src;
     var dest = this.file.dest;
 
     if (files.length === 0) {
