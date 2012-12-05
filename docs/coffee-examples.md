@@ -5,17 +5,10 @@ coffee: {
   compile: {
     files: {
       'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
-      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'], // compile and concat into single file
-      'path/to/*.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile individually into dest, maintaining folder structure
-    }
-  },
-  flatten: {
-    options: {
-      flatten: true
-    },
-    files: {
-      'path/to/*.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile individually into dest, flattening folder structure
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile and concat into single file
     }
   }
 }
 ```
+
+check out this [gist](https://gist.github.com/3703920) if your looking to compile each file in a directory individually. grunt may include such a utility in future versions but for now the gist allows any task that supports 1:1 compiling to support dynamic 1:1 compiling based on glob.

@@ -15,10 +15,12 @@ module.exports = function(grunt) {
     var helpers = require('grunt-lib-contrib').init(grunt);
 
     var options = helpers.options(this, {
-      bare: false,
-      basePath: false,
-      flatten: false
+      bare: false
     });
+
+    if (options.basePath || options.flatten) {
+      grunt.fail.warn('experimental destination wildcards are no longer supported. please refer to readme.');
+    }
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -31,22 +33,10 @@ module.exports = function(grunt) {
       return;
     }
 
-    // hack by chris to support compiling individual files
-    if (helpers.isIndividualDest(dest)) {
-      var basePath = helpers.findBasePath(files, options.basePath);
-    }
-
     files.forEach(function(file) {
       var srcCompiled = compileCoffee(file, options);
 
-      if (basePath !== undefined) {
-        var newFileDest = helpers.buildIndividualDest(dest, file, basePath, options.flatten);
-
-        grunt.file.write(newFileDest, srcCompiled || '');
-        grunt.log.writeln('File ' + newFileDest.cyan + ' created.');
-      } else {
-        taskOutput.push(srcCompiled);
-      }
+      taskOutput.push(srcCompiled);
     });
 
     if (taskOutput.length > 0) {
