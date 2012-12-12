@@ -47,8 +47,6 @@ module.exports = function(grunt) {
 
   var compileCoffee = function(srcFile, options) {
     options = grunt.util._.extend({filename: srcFile}, options);
-    delete options.basePath;
-    delete options.flatten;
 
     var srcCode = grunt.file.read(srcFile);
 

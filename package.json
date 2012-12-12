@@ -29,14 +29,14 @@
   },
   "dependencies": {
     "coffee-script": "~1.3.3",
-    "grunt-lib-contrib": "~0.3.0"
+    "grunt-lib-contrib": "~0.4.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.0",
     "grunt-contrib-nodeunit": "~0.1.0",
-    "grunt-contrib-clean": "~0.4.0a",
+    "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-internal": "~0.1.0",
-    "grunt": "~0.4.0a"
+    "grunt": "~0.4.0"
   },
   "keywords": [
     "gruntplugin"
