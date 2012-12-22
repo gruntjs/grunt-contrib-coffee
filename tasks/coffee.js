@@ -34,13 +34,14 @@ module.exports = function(grunt) {
     }
 
     files.forEach(function(file) {
-      var srcCompiled = compileCoffee(file, options);
-
-      taskOutput.push(srcCompiled);
+      //var srcCompiled = compileCoffee(file, options);
+      var srcReaded = grunt.file.read(file);
+      taskOutput.push(srcReaded);
     });
 
     if (taskOutput.length > 0) {
-      grunt.file.write(dest, taskOutput.join('\n') || '');
+      var srcCompiled = compileCoffee(taskOutput.join('\n'),options);
+      grunt.file.write(dest, /*taskOutput.join('\n')*/ srcCompiled || '');
       grunt.log.writeln('File ' + dest.cyan + ' created.');
     }
   });
@@ -48,8 +49,9 @@ module.exports = function(grunt) {
   var compileCoffee = function(srcFile, options) {
     options = grunt.util._.extend({filename: srcFile}, options);
 
-    var srcCode = grunt.file.read(srcFile);
-
+    //var srcCode = grunt.file.read(srcFile);
+    // We are already giving a concatened source code; no need to read
+    var srcCode = srcFile;
     try {
       return require('coffee-script').compile(srcCode, options);
     } catch (e) {
