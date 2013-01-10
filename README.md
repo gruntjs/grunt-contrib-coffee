@@ -25,8 +25,14 @@ _Version `0.4.x` of this plugin is compatible with Grunt `0.4.x`. Version `0.3.x
 
 ### Options
 
+#### separator
+Type: `String`
+Default: linefeed
+
+Concatenated files will be joined on this string.
+
 #### bare
-Type: ```boolean```
+Type: `boolean`
 
 Compile the JavaScript without the top-level function safety wrapper.
 ### Usage Examples
@@ -63,4 +69,4 @@ coffee: {
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Wed Jan 09 2013 16:13:31.*
+*This file was generated on Thu Jan 10 2013 13:15:24.*
