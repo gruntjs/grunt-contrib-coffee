@@ -12,9 +12,8 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var path = require('path');
-    var helpers = require('grunt-lib-contrib').init(grunt);
 
-    var options = helpers.options(this, {
+    var options = this.options({
       bare: false
     });
 
@@ -24,25 +23,27 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    var taskOutput = [];
-    var files = this.file.src;
-    var dest = this.file.dest;
+    this.files.forEach(function(f) {
+      var taskOutput = [];
+      var files = f.src;
+      var dest = f.dest;
 
-    if (files.length === 0) {
-      grunt.log.writeln('Unable to compile; no valid source files were found.');
-      return;
-    }
+      if (files.length === 0) {
+        grunt.log.writeln('Unable to compile; no valid source files were found.');
+        return;
+      }
 
-    files.forEach(function(file) {
-      var srcCompiled = compileCoffee(file, options);
+      files.forEach(function(file) {
+        var srcCompiled = compileCoffee(file, options);
 
-      taskOutput.push(srcCompiled);
+        taskOutput.push(srcCompiled);
+      });
+
+      if (taskOutput.length > 0) {
+        grunt.file.write(dest, taskOutput.join('\n') || '');
+        grunt.log.writeln('File ' + dest.cyan + ' created.');
+      }
     });
-
-    if (taskOutput.length > 0) {
-      grunt.file.write(dest, taskOutput.join('\n') || '');
-      grunt.log.writeln('File ' + dest.cyan + ' created.');
-    }
   });
 
   var compileCoffee = function(srcFile, options) {

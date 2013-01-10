@@ -21,6 +21,8 @@ _This task is a [multi task][] so any targets, files and options should be speci
 [multi task]: https://github.com/gruntjs/grunt/wiki/Configuring-tasks
 
 
+_Version `0.4.x` of this plugin is compatible with Grunt `0.4.x`. Version `0.3.x` of this plugin is compatible with Grunt `0.3.x`._
+
 ### Options
 
 #### bare
@@ -50,7 +52,8 @@ coffee: {
 
 ## Release History
 
- * 2012-12-14   v0.4.0   Conversion to grunt v0.4 conventions. Remove experimental destination wildcards.
+ * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.filesSrc api.
+ * 2012-12-14   v0.4.0a   Conversion to grunt v0.4 conventions. Remove experimental destination wildcards.
  * 2012-10-11   v0.3.2   Rename grunt-contrib-lib dep to grunt-lib-contrib.
  * 2012-09-24   v0.3.1   Don't fail when there are no files.
  * 2012-09-23   v0.3.0   Global options depreciated.
@@ -60,4 +63,4 @@ coffee: {
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Wed Dec 12 2012 17:29:52.*
+*This file was generated on Wed Jan 09 2013 16:13:31.*
