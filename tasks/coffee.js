@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     });
 
     if (options.basePath || options.flatten) {
-      grunt.fail.warn('experimental destination wildcards are no longer supported. please refer to readme.');
+      grunt.fail.warn('Experimental destination wildcards are no longer supported. please refer to README.');
     }
 
     grunt.verbose.writeflags(options, 'Options');
