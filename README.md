@@ -47,14 +47,16 @@ coffee: {
   },
 
   glob_to_multiple: {
-    files: grunt.file.expandMapping(['path/to/*.coffee'], 'path/to/dest/', {
-      rename: function(destBase, destPath) {
-        return destBase + destPath.replace(/\.coffee$/, '.js');
-      }
-    })
+    expand: true,
+    cwd: 'path/to',
+    src: ['*.coffee'],
+    dest: 'path/to/dest/',
+    ext: '.js'
   }
 }
 ```
+
+For more examples on how to use the `expand` API shown in the `glob_to_multiple` example, see "Building the files object dynamically" in the grunt wiki entry [Configuring Tasks](http://github.com/gruntjs/grunt/wiki/Configuring-tasks).
 
 ## Release History
 
@@ -70,4 +72,4 @@ coffee: {
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Wed Jan 23 2013 10:22:24.*
+*This file was generated on Wed Jan 30 2013 09:42:27.*
