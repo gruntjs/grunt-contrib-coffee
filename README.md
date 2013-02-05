@@ -11,7 +11,7 @@ npm install grunt-contrib-coffee --save-dev
 ```
 
 [grunt]: http://gruntjs.com/
-[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[Getting Started]: http://gruntjs.com/getting-started
 
 
 ## Coffee task
@@ -72,4 +72,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Wed Jan 30 2013 09:42:27.*
+*This file was generated on Tue Feb 05 2013 10:18:17.*
