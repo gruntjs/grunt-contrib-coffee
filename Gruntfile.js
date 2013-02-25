@@ -36,7 +36,12 @@ module.exports = function(grunt) {
       compile: {
         files: {
           'tmp/coffee.js': ['test/fixtures/coffee1.coffee'],
-          'tmp/concat.js': ['test/fixtures/coffee1.coffee', 'test/fixtures/coffee2.coffee']
+          'tmp/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
+          'tmp/concat.js': [
+            'test/fixtures/coffee1.coffee', 
+            'test/fixtures/coffee2.coffee', 
+            'test/fixtures/litcoffee.litcoffee'
+          ]
         }
       }
     },

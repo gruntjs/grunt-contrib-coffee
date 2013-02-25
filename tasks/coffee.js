@@ -48,6 +48,10 @@ module.exports = function(grunt) {
   var compileCoffee = function(srcFile, options) {
     options = grunt.util._.extend({filename: srcFile}, options);
 
+    if (require('path').extname(srcFile) === '.litcoffee') {
+      options.literate = true;
+    }
+
     var srcCode = grunt.file.read(srcFile);
 
     try {
