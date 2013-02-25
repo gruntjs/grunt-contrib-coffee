@@ -12,3 +12,9 @@ HelloWorld = (function() {
 
 
 console.log('hi');
+
+var sayHello;
+
+sayHello = function() {
+  return console.log('hi');
+};
