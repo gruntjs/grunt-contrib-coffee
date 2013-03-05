@@ -10,8 +10,6 @@ module.exports = function(grunt) {
   'use strict';
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
-    var path = require('path');
-
     var options = this.options({
       bare: false,
       separator: grunt.util.linefeed
