@@ -63,7 +63,8 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 ## Release History
 
- * 2013-02-24   v0.5.0   Support .litcoffee
+ * 2013-03-05   v0.6.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript extension coffee.md
+ * 2013-02-24   v0.5.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript (.litcoffee)
  * 2013-02-14   v0.4.0   First official release for Grunt 0.4.0.
  * 2013-01-22   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions. Bump coffeescript dependency to 1.4.
  * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.filesSrc api.
@@ -77,4 +78,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Mar 01 2013 17:55:47.*
+*This file was generated on Wed Mar 06 2013 08:39:44.*

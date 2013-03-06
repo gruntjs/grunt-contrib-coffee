@@ -46,7 +46,8 @@ module.exports = function(grunt) {
   var compileCoffee = function(srcFile, options) {
     options = grunt.util._.extend({filename: srcFile}, options);
 
-    if (require('path').extname(srcFile) === '.litcoffee') {
+    var ext = require('path').extname(srcFile);
+    if (ext === '.litcoffee' || ext === '.md') {
       options.literate = true;
     }
 

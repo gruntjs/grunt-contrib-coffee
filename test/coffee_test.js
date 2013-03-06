@@ -17,13 +17,17 @@ exports.coffee = {
   compile: function(test) {
     'use strict';
 
-    test.expect(3);
+    test.expect(4);
 
     var actual = readFile('tmp/coffee.js');
     var expected = readFile('test/expected/coffee.js');
     test.equal(expected, actual, 'should compile coffeescript to javascript');
 
     actual = readFile('tmp/litcoffee.js');
+    expected = readFile('test/expected/litcoffee.js');
+    test.equal(expected, actual, 'should compile literate coffeescript to javascript');
+
+    actual = readFile('tmp/litcoffeemd.js');
     expected = readFile('test/expected/litcoffee.js');
     test.equal(expected, actual, 'should compile literate coffeescript to javascript');
 

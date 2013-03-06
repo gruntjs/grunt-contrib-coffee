@@ -1,7 +1,13 @@
+v0.6.0:
+  date: 2013-03-06
+  changes:
+    - Bump to CoffeeScript 1.6
+    - Support literate CoffeeScript extension coffee.md
 v0.5.0:
   date: 2013-02-25
   changes:
-    - Support .litcoffee
+    - Bump to CoffeeScript 1.6
+    - Support literate CoffeeScript (.litcoffee)
 v0.4.0:
   date: 2013-02-15
   changes:
