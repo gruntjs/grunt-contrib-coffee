@@ -13,27 +13,64 @@ function readFile(file) {
   return contents;
 }
 
+function assertFileEquality(test, pathToActual, pathToExpected, message) {
+    var actual = readFile(pathToActual);
+    var expected = readFile(pathToExpected);
+    test.equal(expected, actual, message);
+}
+
 exports.coffee = {
-  compile: function(test) {
+  compileBare: function(test) {
     'use strict';
 
     test.expect(4);
 
-    var actual = readFile('tmp/coffee.js');
-    var expected = readFile('test/expected/coffee.js');
-    test.equal(expected, actual, 'should compile coffeescript to javascript');
+    assertFileEquality(test,
+      'tmp/bare/coffee.js',
+      'test/expected/bare/coffee.js',
+      'Should compile coffeescript to unwrapped javascript');
 
-    actual = readFile('tmp/litcoffee.js');
-    expected = readFile('test/expected/litcoffee.js');
-    test.equal(expected, actual, 'should compile literate coffeescript to javascript');
+    assertFileEquality(test,
+      'tmp/bare/litcoffee.js',
+      'test/expected/bare/litcoffee.js',
+      'Should compile literate coffeescript to unwrapped javascript');
 
-    actual = readFile('tmp/litcoffeemd.js');
-    expected = readFile('test/expected/litcoffee.js');
-    test.equal(expected, actual, 'should compile literate coffeescript to javascript');
+    assertFileEquality(test,
+      'tmp/bare/litcoffeemd.js',
+      'test/expected/bare/litcoffee.js',
+      'Should compile literate coffeescript to unwrapped javascript');
 
-    actual = readFile('tmp/concat.js');
-    expected = readFile('test/expected/concat.js');
-    test.equal(expected, actual, 'should compile multiple coffeescript files to a single javascript file');
+    assertFileEquality(test,
+      'tmp/bare/concat.js',
+      'test/expected/bare/concat.js',
+      'Should compile multiple coffeescript files to a single, unwrapped javascript file');
+
+    test.done();
+  },
+  compileDefault: function(test) {
+    'use strict';
+
+    test.expect(4);
+
+    assertFileEquality(test,
+      'tmp/default/coffee.js',
+      'test/expected/default/coffee.js',
+      'Should compile coffeescript to javascript');
+
+    assertFileEquality(test,
+      'tmp/default/litcoffee.js',
+      'test/expected/default/litcoffee.js',
+      'Should compile literate coffeescript to wrapped javascript');
+
+    assertFileEquality(test,
+      'tmp/default/litcoffeemd.js',
+      'test/expected/default/litcoffee.js',
+      'Should compile literate coffeescript to wrapped javascript');
+
+    assertFileEquality(test,
+      'tmp/default/concat.js',
+      'test/expected/default/concat.js',
+      'Should compile multiple coffeescript files to a single, wrapped javascript file');
 
     test.done();
   }
