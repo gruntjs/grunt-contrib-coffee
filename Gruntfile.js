@@ -25,20 +25,32 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      tests: ['tmp/bare', 'tmp/default', 'tmp/maps']
     },
 
     // Configuration to be run (and then tested).
     coffee: {
-      options: {
-        bare: true
-      },
-      compile: {
+      compileDefault: {
         files: {
-          'tmp/coffee.js': ['test/fixtures/coffee1.coffee'],
-          'tmp/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
-          'tmp/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
-          'tmp/concat.js': [
+          'tmp/default/coffee.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/default/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
+          'tmp/default/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
+          'tmp/default/concat.js': [
+            'test/fixtures/coffee1.coffee',
+            'test/fixtures/coffee2.coffee',
+            'test/fixtures/litcoffee.litcoffee'
+          ]
+        }
+      },
+      compileBare: {
+        options: {
+          bare: true
+        },
+        files: {
+          'tmp/bare/coffee.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/bare/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
+          'tmp/bare/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
+          'tmp/bare/concat.js': [
             'test/fixtures/coffee1.coffee',
             'test/fixtures/coffee2.coffee',
             'test/fixtures/litcoffee.litcoffee'
