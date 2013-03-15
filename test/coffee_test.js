@@ -1,5 +1,6 @@
 var grunt = require('grunt');
 var fs = require('fs');
+var coffee = require('../tasks/coffee.js');
 
 function readFile(file) {
   'use strict';
@@ -43,7 +44,7 @@ exports.coffee = {
     assertFileEquality(test,
       'tmp/bare/concat.js',
       'test/expected/bare/concat.js',
-      'Should compile multiple coffeescript files to a single, unwrapped javascript file');
+      'Should compile coffeescript files without wrappers and concatenate them into a single javascript file');
 
     test.done();
   },
@@ -70,7 +71,34 @@ exports.coffee = {
     assertFileEquality(test,
       'tmp/default/concat.js',
       'test/expected/default/concat.js',
-      'Should compile multiple coffeescript files to a single, wrapped javascript file');
+      'Should compile coffeescript files with wrappers and concatenate them into a single javascript file');
+
+    test.done();
+  },
+  compileJoined: function(test) {
+    'use strict';
+
+    test.expect(4);
+
+    assertFileEquality(test,
+      'tmp/join/coffee.js',
+      'test/expected/default/coffee.js',
+      'Compilation of one file with join enabled should match normal compilation');
+
+    assertFileEquality(test,
+      'tmp/join/join.js',
+      'test/expected/join/join.js',
+      'Should concatenate coffeescript files prior to compilation into a single javascript file');
+
+    assertFileEquality(test,
+      'tmp/join/bareCoffee.js',
+      'test/expected/bare/coffee.js',
+      'Bare compilation of one file with join enabled should match bare compilation');
+
+    assertFileEquality(test,
+      'tmp/join/bareJoin.js',
+      'test/expected/join/bareJoin.js',
+      'Bare compilation of multiple join files should be equivalent to concatenated compilation');
 
     test.done();
   }

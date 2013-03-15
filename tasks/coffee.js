@@ -12,6 +12,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
       bare: false,
+      join: false,
       separator: grunt.util.linefeed
     });
 
@@ -22,17 +23,10 @@ module.exports = function(grunt) {
     grunt.verbose.writeflags(options, 'Options');
 
     this.files.forEach(function(f) {
-      var output = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        return compileCoffee(filepath, options);
-      }).join(grunt.util.normalizelf(options.separator));
+      var validFiles = removeInvalidFiles(f);
+      var output = (options.join === true) ?
+        concatInput(validFiles, options) :
+        concatOutput(validFiles, options);
 
       if (output.length < 1) {
         grunt.log.warn('Destination not written because compiled files were empty.');
@@ -42,6 +36,31 @@ module.exports = function(grunt) {
       }
     });
   });
+
+  var removeInvalidFiles = function(files) {
+    return files.src.filter(function(filepath) {
+      if (!grunt.file.exists(filepath)) {
+        grunt.log.warn('Source file "' + filepath + '" not found.');
+        return false;
+      } else {
+        return true;
+      }
+    });
+  };
+
+  var concatInput = function (files, options) {
+    var code = files.map(function (filePath) {
+      return grunt.file.read(filePath);
+    }).join(grunt.util.normalizelf(grunt.util.linefeed));
+    options = grunt.util._.clone(options);
+    return require('coffee-script').compile(code, options);
+  };
+
+  var concatOutput = function(files, options) {
+    return files.map(function(filepath) {
+      return compileCoffee(filepath, options);
+    }).join(grunt.util.normalizelf(options.separator));
+  };
 
   var compileCoffee = function(srcFile, options) {
     options = grunt.util._.extend({filename: srcFile}, options);
