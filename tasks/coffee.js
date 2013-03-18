@@ -20,10 +20,6 @@ module.exports = function(grunt) {
       separator: grunt.util.linefeed
     });
 
-    if (options.basePath || options.flatten) {
-      grunt.fail.warn('Experimental destination wildcards are no longer supported. please refer to README.');
-    }
-
     grunt.verbose.writeflags(options, 'Options');
 
     this.files.forEach(function (f) {
