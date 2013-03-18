@@ -2,7 +2,6 @@
   var HelloWorld;
 
   HelloWorld = (function() {
-
     function HelloWorld() {}
 
     HelloWorld.test = 'test';
@@ -14,7 +13,6 @@
 }).call(this);
 
 (function() {
-
   console.log('hi');
 
 }).call(this);
