@@ -38,6 +38,12 @@ Concatenated files will be joined on this string.
 Type: `boolean`
 
 Compile the JavaScript without the top-level function safety wrapper.
+
+#### join
+Type: `boolean`
+Default: `false`
+
+When compiling multiple .coffee files into a single .js file, concatenate first.
 ### Usage Examples
 
 ```js
@@ -63,6 +69,7 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 ## Release History
 
+ * 2013-03-17   v0.6.1   Support `join` option
  * 2013-03-05   v0.6.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript extension coffee.md
  * 2013-02-24   v0.5.0   Bump to CoffeeScript 1.5 Support literate CoffeeScript (.litcoffee)
  * 2013-02-14   v0.4.0   First official release for Grunt 0.4.0.
@@ -78,4 +85,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Thu Mar 07 2013 07:53:56.*
+*This file was generated on Mon Mar 18 2013 09:25:44.*

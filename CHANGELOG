@@ -1,3 +1,7 @@
+v0.6.1:
+  date: 2013-03-18
+  changes:
+    - Support `join` option
 v0.6.0:
   date: 2013-03-06
   changes:
