@@ -9,7 +9,11 @@
 module.exports = function(grunt) {
   'use strict';
 
+  var path = require('path');
+  var _ = grunt.util._;
+
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
+
     var options = this.options({
       bare: false,
       join: false,
@@ -22,12 +26,21 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    this.files.forEach(function(f) {
+    this.files.forEach(function (f) {
       var validFiles = removeInvalidFiles(f);
       var output;
 
+      // get all extensions for input files
+      var ext = validFiles.map(function (f) {
+        return path.extname(f);
+      });
+
       if (options.join === true) {
-        output = concatInput(validFiles, options);
+        if(_.uniq(ext).length > 1) {
+          grunt.fail.warn('Join options requires input files share the same extension (found '+_.uniq(ext).join(', ')+').');
+        } else {
+          output = concatInput(validFiles, options);
+        }
       } else {
         output = concatOutput(validFiles, options);
       }
@@ -40,6 +53,10 @@ module.exports = function(grunt) {
       }
     });
   });
+
+  var isLiterate = function (ext) {
+    return (ext === ".litcoffee" || ext === ".md");
+  };
 
   var removeInvalidFiles = function(files) {
     return files.src.filter(function(filepath) {
@@ -55,29 +72,26 @@ module.exports = function(grunt) {
   var concatInput = function (files, options) {
     var code = files.map(function (filePath) {
       return grunt.file.read(filePath);
-    }).join(grunt.util.normalizelf(grunt.util.linefeed));
-    options = grunt.util._.clone(options);
-    return require('coffee-script').compile(code, options);
+    }).join(grunt.util.normalizelf(options.separator));
+    return compileCoffee(code, options);
   };
 
   var concatOutput = function(files, options) {
     return files.map(function(filepath) {
-      return compileCoffee(filepath, options);
+      var code = grunt.file.read(filepath);
+      return compileCoffee(code, options, filepath);
     }).join(grunt.util.normalizelf(options.separator));
   };
 
-  var compileCoffee = function(srcFile, options) {
-    options = grunt.util._.extend({filename: srcFile}, options);
-
-    var ext = require('path').extname(srcFile);
-    if (ext === '.litcoffee' || ext === '.md') {
-      options.literate = true;
+  var compileCoffee = function(code, options, filepath) {
+    options = _.clone(options);
+    if(filepath) {
+      options.filename = filepath;
+      options.literate = isLiterate(path.extname(filepath));
     }
 
-    var srcCode = grunt.file.read(srcFile);
-
     try {
-      return require('coffee-script').compile(srcCode, options);
+      return require('coffee-script').compile(code, options);
     } catch (e) {
       grunt.log.error(e);
       grunt.fail.warn('CoffeeScript failed to compile.');
