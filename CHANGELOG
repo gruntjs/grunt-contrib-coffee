@@ -1,3 +1,7 @@
+v0.6.2:
+  date: 2013-03-18
+  changes:
+    - Bump to CoffeeScript 1.6.2
 v0.6.1:
   date: 2013-03-18
   changes:

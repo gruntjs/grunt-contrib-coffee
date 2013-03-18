@@ -69,6 +69,7 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 ## Release History
 
+ * 2013-03-17   v0.6.2   Bump to CoffeeScript 1.6.2
  * 2013-03-17   v0.6.1   Support `join` option
  * 2013-03-05   v0.6.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript extension coffee.md
  * 2013-02-24   v0.5.0   Bump to CoffeeScript 1.5 Support literate CoffeeScript (.litcoffee)
@@ -85,4 +86,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Mon Mar 18 2013 09:25:44.*
+*This file was generated on Mon Mar 18 2013 10:48:23.*
