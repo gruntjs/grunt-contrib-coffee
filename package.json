@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "coffee-script": "~1.6.1"
+    "coffee-script": "~1.6.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.2.0",
