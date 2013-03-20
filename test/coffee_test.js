@@ -1,6 +1,5 @@
 var grunt = require('grunt');
 var fs = require('fs');
-var coffee = require('../tasks/coffee.js');
 
 function readFile(file) {
   'use strict';
@@ -99,6 +98,63 @@ exports.coffee = {
       'tmp/join/bareJoin.js',
       'test/expected/join/bareJoin.js',
       'Bare compilation of multiple join files should be equivalent to concatenated compilation');
+
+    test.done();
+  },
+  compileMaps: function(test) {
+    'use strict';
+
+    test.expect(10);
+
+    assertFileEquality(test,
+      'tmp/maps/coffee.js',
+      'test/expected/maps/coffee.js',
+      'Compilation of single file with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/maps/coffee.map',
+      'test/expected/maps/coffee.map',
+      'Compilation of single file with source maps should generate map');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeJoin.js',
+      'test/expected/maps/coffeeJoin.js',
+      'Compilation of multiple files with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeJoin.map',
+      'test/expected/maps/coffeeJoin.map',
+      'Compilation of multiple files with source maps should generate map');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeJoin.src.coffee',
+      'test/expected/maps/coffeeJoin.src.coffee',
+      'Compilation of multiple files with source maps should output concatenated source');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeBare.js',
+      'test/expected/maps/coffeeBare.js',
+      'Bare compilation of single file with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeBare.map',
+      'test/expected/maps/coffeeBare.map',
+      'Bare compilation of single file with source maps should generate map');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeBareJoin.js',
+      'test/expected/maps/coffeeBareJoin.js',
+      'Bare compilation of multiple files with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeBareJoin.map',
+      'test/expected/maps/coffeeBareJoin.map',
+      'Bare compilation of multiple files with source maps should generate map');
+
+    assertFileEquality(test,
+      'tmp/maps/coffeeBareJoin.src.coffee',
+      'test/expected/maps/coffeeBareJoin.src.coffee',
+      'Bare compilation of multiple files with source maps should output concatenated source');
 
     test.done();
   }
