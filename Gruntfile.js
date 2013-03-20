@@ -10,6 +10,17 @@
 
 module.exports = function(grunt) {
 
+  var mixedConcatFixtures = [
+    'test/fixtures/coffee1.coffee',
+    'test/fixtures/coffee2.coffee',
+    'test/fixtures/litcoffee.litcoffee'
+  ];
+
+  var uniformConcatFixtures = [
+    'test/fixtures/coffee1.coffee',
+    'test/fixtures/coffee2.coffee'
+  ];
+
   // Project configuration.
   grunt.initConfig({
     jshint: {
@@ -35,11 +46,7 @@ module.exports = function(grunt) {
           'tmp/default/coffee.js': ['test/fixtures/coffee1.coffee'],
           'tmp/default/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
           'tmp/default/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
-          'tmp/default/concat.js': [
-            'test/fixtures/coffee1.coffee',
-            'test/fixtures/coffee2.coffee',
-            'test/fixtures/litcoffee.litcoffee'
-          ]
+          'tmp/default/concat.js': mixedConcatFixtures
         }
       },
       compileBare: {
@@ -50,11 +57,7 @@ module.exports = function(grunt) {
           'tmp/bare/coffee.js': ['test/fixtures/coffee1.coffee'],
           'tmp/bare/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
           'tmp/bare/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
-          'tmp/bare/concat.js': [
-            'test/fixtures/coffee1.coffee',
-            'test/fixtures/coffee2.coffee',
-            'test/fixtures/litcoffee.litcoffee'
-          ]
+          'tmp/bare/concat.js': mixedConcatFixtures
         }
       },
       compileJoined: {
@@ -63,10 +66,7 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/join/coffee.js': ['test/fixtures/coffee1.coffee'],
-          'tmp/join/join.js': [
-            'test/fixtures/coffee1.coffee',
-            'test/fixtures/coffee2.coffee'
-          ]
+          'tmp/join/join.js': uniformConcatFixtures
         }
       },
       compileBareJoined: {
@@ -76,10 +76,26 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/join/bareCoffee.js': ['test/fixtures/coffee1.coffee'],
-          'tmp/join/bareJoin.js': [
-            'test/fixtures/coffee1.coffee',
-            'test/fixtures/coffee2.coffee'
-          ]
+          'tmp/join/bareJoin.js': uniformConcatFixtures
+        }
+      },
+      compileMaps: {
+        options: {
+          sourceMap: true
+        },
+        files: {
+          'tmp/maps/coffee.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/maps/coffeeJoin.js': uniformConcatFixtures
+        }
+      },
+      compileBareMaps: {
+        options: {
+          sourceMap: true,
+          bare: true
+        },
+        files: {
+          'tmp/maps/coffeeBare.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/maps/coffeeBareJoin.js': uniformConcatFixtures
         }
       }
     },
