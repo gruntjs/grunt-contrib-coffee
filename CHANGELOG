@@ -1,3 +1,7 @@
+v0.6.3:
+  date: 2013-03-19
+  changes:
+    - Increase error logging verbosity.
 v0.6.2:
   date: 2013-03-18
   changes:
