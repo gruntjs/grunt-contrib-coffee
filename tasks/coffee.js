@@ -90,6 +90,8 @@ module.exports = function(grunt) {
       return require('coffee-script').compile(code, options);
     } catch (e) {
       grunt.log.error(e);
+      grunt.log.error('In file: '+filepath);
+      grunt.log.error('On line: '+e.location.first_line);
       grunt.fail.warn('CoffeeScript failed to compile.');
     }
   };
