@@ -9,6 +9,36 @@ coffee: {
     }
   },
 
+  compileBare: {
+    options: {
+      bare: true
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile and concat into single file
+    }
+  },
+
+  compileJoined: {
+    options: {
+      join: true
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile, identical output to join = false
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // concat then compile into single file
+    }
+  },
+
+  compileWithMaps: {
+    options: {
+      sourceMap: true
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // concat then compile into single file
+    }
+  },
+
   glob_to_multiple: {
     expand: true,
     cwd: 'path/to',
