@@ -44,6 +44,12 @@ Type: `boolean`
 Default: `false`
 
 When compiling multiple .coffee files into a single .js file, concatenate first.
+
+#### sourceMap
+Type: `boolean`
+Default: `false`
+
+Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
 ### Usage Examples
 
 ```js
@@ -52,6 +58,36 @@ coffee: {
     files: {
       'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
       'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile and concat into single file
+    }
+  },
+
+  compileBare: {
+    options: {
+      bare: true
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile and concat into single file
+    }
+  },
+
+  compileJoined: {
+    options: {
+      join: true
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile, identical output to join = false
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // concat then compile into single file
+    }
+  },
+
+  compileWithMaps: {
+    options: {
+      sourceMap: true
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // concat then compile into single file
     }
   },
 
@@ -69,6 +105,7 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 ## Release History
 
+ * 2013-03-21   v0.6.4   Sourcemap support
  * 2013-03-18   v0.6.3   Increase error logging verbosity.
  * 2013-03-17   v0.6.2   Bump to CoffeeScript 1.6.2
  * 2013-03-17   v0.6.1   Support `join` option
@@ -87,4 +124,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Tue Mar 19 2013 20:06:32.*
+*This file was generated on Fri Mar 22 2013 10:05:57.*

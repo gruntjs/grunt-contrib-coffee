@@ -1,3 +1,7 @@
+v0.6.4:
+  date: 2013-03-22
+  changes:
+    - Sourcemap support
 v0.6.3:
   date: 2013-03-19
   changes:
