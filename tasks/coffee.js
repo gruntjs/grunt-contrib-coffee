@@ -75,12 +75,13 @@ module.exports = function(grunt) {
       return;
     }
 
-    var mapOptions;
+    var mapOptions, filepath;
 
     if (files.length > 1) {
       mapOptions = createOptionsForJoin(files, paths, options.separator);
     } else {
       mapOptions = createOptionsForFile(files[0], paths);
+      filepath = files[0];
     }
 
     options = _.extend({
@@ -89,7 +90,7 @@ module.exports = function(grunt) {
         sourceFiles: mapOptions.sourceFiles
       }, options);
 
-    var output = compileCoffee(mapOptions.code, options);
+    var output = compileCoffee(mapOptions.code, options, filepath);
     prependHeader(output, paths);
     return output;
   };
