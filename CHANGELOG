@@ -1,3 +1,7 @@
+v0.6.5:
+  date: 2013-04-05
+  changes:
+    - Improved error reporting
 v0.6.4:
   date: 2013-03-22
   changes:

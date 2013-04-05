@@ -105,6 +105,7 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 ## Release History
 
+ * 2013-04-04   v0.6.5   Improved error reporting
  * 2013-03-21   v0.6.4   Sourcemap support
  * 2013-03-18   v0.6.3   Increase error logging verbosity.
  * 2013-03-17   v0.6.2   Bump to CoffeeScript 1.6.2
@@ -124,4 +125,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Mar 22 2013 10:05:57.*
+*This file was generated on Fri Apr 05 2013 09:22:21.*
