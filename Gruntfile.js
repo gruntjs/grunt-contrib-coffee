@@ -88,6 +88,18 @@ module.exports = function(grunt) {
           'tmp/maps/coffeeJoin.js': uniformConcatFixtures
         }
       },
+      compileEachMap: {
+        options: {
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/',
+          src: ['coffee1.coffee', 'litcoffee.litcoffee'],
+          dest: 'tmp/eachMap/',
+          ext: '.js'
+        }]
+      },
       compileBareMaps: {
         options: {
           sourceMap: true,
