@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         sourceFiles: mapOptions.sourceFiles
       }, options);
 
-    var output = compileCoffee(mapOptions.code, options);
+    var output = compileCoffee(mapOptions.code, options, mapOptions.sourceFiles[0]);
     prependHeader(output, paths);
     return output;
   };
