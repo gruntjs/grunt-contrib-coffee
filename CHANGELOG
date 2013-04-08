@@ -1,3 +1,7 @@
+v0.6.6:
+  date: 2013-04-08
+  changes:
+    - Fix regression with single-file compilation.
 v0.6.5:
   date: 2013-04-05
   changes:

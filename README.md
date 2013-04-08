@@ -105,24 +105,25 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 ## Release History
 
- * 2013-04-04   v0.6.5   Improved error reporting
- * 2013-03-21   v0.6.4   Sourcemap support
- * 2013-03-18   v0.6.3   Increase error logging verbosity.
- * 2013-03-17   v0.6.2   Bump to CoffeeScript 1.6.2
- * 2013-03-17   v0.6.1   Support `join` option
- * 2013-03-05   v0.6.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript extension coffee.md
- * 2013-02-24   v0.5.0   Bump to CoffeeScript 1.5 Support literate CoffeeScript (.litcoffee)
- * 2013-02-14   v0.4.0   First official release for Grunt 0.4.0.
- * 2013-01-22   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions. Bump coffeescript dependency to 1.4.
- * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.filesSrc api.
- * 2012-12-14   v0.4.0a   Conversion to grunt v0.4 conventions. Remove experimental destination wildcards.
- * 2012-10-11   v0.3.2   Rename grunt-contrib-lib dep to grunt-lib-contrib.
- * 2012-09-24   v0.3.1   Don't fail when there are no files.
- * 2012-09-23   v0.3.0   Global options depreciated.
- * 2012-09-09   v0.2.0   Refactored from grunt-contrib into individual repo.
+ * 2013-04-08   v0.6.6   Fix regression with single-file compilation.
+ * 2013-04-05   v0.6.5   Improved error reporting
+ * 2013-03-22   v0.6.4   Sourcemap support
+ * 2013-03-19   v0.6.3   Increase error logging verbosity.
+ * 2013-03-18   v0.6.2   Bump to CoffeeScript 1.6.2
+ * 2013-03-18   v0.6.1   Support `join` option
+ * 2013-03-06   v0.6.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript extension coffee.md
+ * 2013-02-25   v0.5.0   Bump to CoffeeScript 1.5 Support literate CoffeeScript (.litcoffee)
+ * 2013-02-15   v0.4.0   First official release for Grunt 0.4.0.
+ * 2013-01-23   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions. Bump coffeescript dependency to 1.4.
+ * 2013-01-09   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.filesSrc api.
+ * 2012-12-15   v0.4.0a   Conversion to grunt v0.4 conventions. Remove experimental destination wildcards.
+ * 2012-10-12   v0.3.2   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-09-25   v0.3.1   Don't fail when there are no files.
+ * 2012-09-24   v0.3.0   Global options depreciated.
+ * 2012-09-10   v0.2.0   Refactored from grunt-contrib into individual repo.
 
 ---
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Apr 05 2013 09:22:21.*
+*This file was generated on Mon Apr 08 2013 10:27:57.*
