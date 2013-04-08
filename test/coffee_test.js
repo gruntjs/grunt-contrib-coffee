@@ -157,5 +157,32 @@ exports.coffee = {
       'Bare compilation of multiple files with source maps should output concatenated source');
 
     test.done();
+  },
+  compileEachMap: function(test) {
+    'use strict';
+
+    test.expect(4);
+
+    assertFileEquality(test,
+      'tmp/eachMap/coffee1.js',
+      'test/expected/eachMap/coffee1.js',
+      'Separate compilation of coffee and litcoffee files with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/eachMap/litcoffee.js',
+      'test/expected/eachMap/litcoffee.js',
+      'Separate compilation of coffee and litcoffee files with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/eachMap/coffee1.map',
+      'test/expected/eachMap/coffee1.map',
+      'Separate compilation of coffee and litcoffee files with source maps should generate map');
+
+    assertFileEquality(test,
+      'tmp/eachMap/litcoffee.map',
+      'test/expected/eachMap/litcoffee.map',
+      'Separate compilation of coffee and litcoffee files with source maps should generate map');
+
+    test.done();
   }
 };
