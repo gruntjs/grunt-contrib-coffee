@@ -90,7 +90,7 @@ module.exports = function(grunt) {
       }, options);
 
     var output = compileCoffee(mapOptions.code, options);
-    prependHeader(output, paths);
+    appendFooter(output, paths);
     return output;
   };
 
@@ -134,15 +134,9 @@ module.exports = function(grunt) {
     };
   };
 
-  var prependHeader = function (output, paths) {
-    // Add sourceMappingURL to file header
-    output.js = '//@ sourceMappingURL=' + paths.mapFileName + '\n' +
-      output.js;
-
-    // Add ';' to mappings to account for the addition of the header line
-    var v3SourceMap = JSON.parse(output.v3SourceMap);
-    v3SourceMap.mappings = ';' + v3SourceMap.mappings;
-    output.v3SourceMap = JSON.stringify(v3SourceMap, undefined, 2);
+  var appendFooter = function (output, paths) {
+    // Add sourceMappingURL to file footer
+    output.js = output.js + '\n/*\n//@ sourceMappingURL=' + paths.mapFileName + '\n*/';
   };
 
   var concatInput = function (files, options) {
