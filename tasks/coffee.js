@@ -58,7 +58,7 @@ module.exports = function(grunt) {
       dest: destination,
       destName: fileName,
       destDir: appendTrailingSlash(path.dirname(destination)),
-      mapFileName: fileName + '.map'
+      mapFileName: fileName + '.js.map'
     };
   };
 
