@@ -93,6 +93,7 @@ coffee: {
 
   glob_to_multiple: {
     expand: true,
+    flatten: true,
     cwd: 'path/to',
     src: ['*.coffee'],
     dest: 'path/to/dest/',
@@ -101,7 +102,7 @@ coffee: {
 }
 ```
 
-For more examples on how to use the `expand` API shown in the `glob_to_multiple` example, see "Building the files object dynamically" in the grunt wiki entry [Configuring Tasks](http://gruntjs.com/configuring-tasks).
+For more examples on how to use the `expand` API to manipulate the default dynamic path construction in the `glob_to_multiple` examples, see "Building the files object dynamically" in the grunt wiki entry [Configuring Tasks](http://gruntjs.com/configuring-tasks).
 
 ## Release History
 
@@ -126,4 +127,4 @@ For more examples on how to use the `expand` API shown in the `glob_to_multiple`
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Mon Apr 08 2013 10:27:57.*
+*This file was generated on Thu Apr 11 2013 09:37:07.*
