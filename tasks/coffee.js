@@ -172,28 +172,39 @@ module.exports = function(grunt) {
     try {
       return require('coffee-script').compile(code, options);
     } catch (e) {
-
-      var firstColumn = e.location.first_column;
-      var firstLine = e.location.first_line;
-      var codeLine = code.split('\n')[firstLine];
-      var errorArrows = '\x1B[31m>>\x1B[39m ';
-      var offendingCharacter;
-
-      if (firstColumn < codeLine.length) {
-        offendingCharacter = '\x1B[31m' + codeLine[firstColumn] + '\x1B[39m';
+      if (e.location == null ||
+          e.location.first_column == null ||
+          e.location.first_line == null) {
+        grunt.log.error('Got an unexpected exception ' +
+                        'from the coffee-script compiler. ' + 
+                        'The original exception was: ' +
+                        e);
+        grunt.log.error('(The coffee-script compiler should not raise *unexpected* exceptions. ' +
+                        'You can file this error as an issue of the coffee-script compiler: ' +
+                        'https://github.com/jashkenas/coffee-script/issues)');
       } else {
-        offendingCharacter = '';
+        var firstColumn = e.location.first_column;
+        var firstLine = e.location.first_line;
+        var codeLine = code.split('\n')[firstLine];
+        var errorArrows = '\x1B[31m>>\x1B[39m ';
+        var offendingCharacter;
+  
+        if (firstColumn < codeLine.length) {
+          offendingCharacter = '\x1B[31m' + codeLine[firstColumn] + '\x1B[39m';
+        } else {
+          offendingCharacter = '';
+        }
+  
+        grunt.log.error(e);
+        grunt.log.error('In file: ' + filepath);
+        grunt.log.error('On line: ' + firstLine);
+        // Log erroneous line and highlight offending character
+        // grunt.log.error trims whitespace so we have to use grunt.log.writeln
+        grunt.log.writeln(errorArrows + codeLine.substring(0, firstColumn) +
+                          offendingCharacter + codeLine.substring(firstColumn + 1));
+        grunt.log.writeln(errorArrows + grunt.util.repeat(firstColumn, ' ') +
+                          '\x1B[31m^\x1B[39m ');
       }
-
-      grunt.log.error(e);
-      grunt.log.error('In file: ' + filepath);
-      grunt.log.error('On line: ' + firstLine);
-      // Log erroneous line and highlight offending character
-      // grunt.log.error trims whitespace so we have to use grunt.log.writeln
-      grunt.log.writeln(errorArrows + codeLine.substring(0, firstColumn) +
-                        offendingCharacter + codeLine.substring(firstColumn + 1));
-      grunt.log.writeln(errorArrows + grunt.util.repeat(firstColumn, ' ') +
-                        '\x1B[31m^\x1B[39m ');
       grunt.fail.warn('CoffeeScript failed to compile.');
     }
   };
