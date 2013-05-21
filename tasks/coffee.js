@@ -131,7 +131,7 @@ module.exports = function(grunt) {
     return {
       code: grunt.file.read(file),
       sourceFiles: [path.basename(file)],
-      sourceRoot: appendTrailingSlash(path.relative(paths.destDir, path.dirname(file)))
+      sourceRoot: appendTrailingSlash(path.relative(paths.destDir, path.dirname(paths.dest)))
     };
   };
 
