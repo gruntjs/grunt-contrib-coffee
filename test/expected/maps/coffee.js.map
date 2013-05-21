@@ -1,7 +1,7 @@
 {
   "version": 3,
   "file": "coffee.js",
-  "sourceRoot": "../../test/fixtures/",
+  "sourceRoot": "",
   "sources": [
     "coffee1.coffee"
   ],
