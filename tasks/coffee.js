@@ -222,7 +222,7 @@ module.exports = function(grunt) {
       warnOnEmptyFile(path);
     } else {
       grunt.file.write(path, output);
-      grunt.log.writeln('File ' + path + ' created.');
+      grunt.log.writeln('File ' + path.cyan + ' created.');
     }
   };
 };
