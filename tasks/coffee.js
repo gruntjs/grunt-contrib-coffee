@@ -11,10 +11,11 @@ module.exports = function(grunt) {
 
   var path = require('path');
   var _ = grunt.util._;
+  var options;
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
 
-    var options = this.options({
+    options = this.options({
       bare: false,
       join: false,
       sourceMap: false,
@@ -30,7 +31,7 @@ module.exports = function(grunt) {
       } else if (options.join === true) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {
-        writeFile(f.dest, concatOutput(validFiles, options));
+        writeFile(f.dest, concatOutput(validFiles));
       }
     });
   });
@@ -85,7 +86,8 @@ module.exports = function(grunt) {
     options = _.extend({
         generatedFile: path.basename(paths.dest),
         sourceRoot: mapOptions.sourceRoot,
-        sourceFiles: mapOptions.sourceFiles
+        sourceFiles: mapOptions.sourceFiles,
+        sourceMapDir: paths.destDir
       }, options);
 
     var output = compileCoffee(mapOptions.code, options, filepath);
@@ -134,8 +136,10 @@ module.exports = function(grunt) {
   };
 
   var appendFooter = function (output, paths) {
+    // we need to sourceMappingURL to be relative to the js path
+    var sourceMappingDir = paths.destDir.replace(/[^/]+/g, '..') + options.sourceMapDir;
     // Add sourceMappingURL to file footer
-    output.js = output.js + '\n/*\n//# sourceMappingURL=' + paths.mapFileName + '\n*/';
+    output.js = output.js + '\n/*\n//@ sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n*/';
   };
 
   var concatInput = function (files, options) {
@@ -155,20 +159,20 @@ module.exports = function(grunt) {
   };
 
   var compileCoffee = function(code, options, filepath) {
-    options = _.clone(options);
+    var coffeeOptions = _.clone(options);
     if(filepath) {
-      options.filename = filepath;
-      options.literate = isLiterate(path.extname(filepath));
+      coffeeOptions.filename = filepath;
+      coffeeOptions.literate = isLiterate(path.extname(filepath));
     }
 
     try {
-      return require('coffee-script').compile(code, options);
+      return require('coffee-script').compile(code, coffeeOptions);
     } catch (e) {
       if (e.location == null ||
           e.location.first_column == null ||
           e.location.first_line == null) {
         grunt.log.error('Got an unexpected exception ' +
-                        'from the coffee-script compiler. ' + 
+                        'from the coffee-script compiler. ' +
                         'The original exception was: ' +
                         e);
         grunt.log.error('(The coffee-script compiler should not raise *unexpected* exceptions. ' +
@@ -180,13 +184,13 @@ module.exports = function(grunt) {
         var codeLine = code.split('\n')[firstLine];
         var errorArrows = '\x1B[31m>>\x1B[39m ';
         var offendingCharacter;
-  
+
         if (firstColumn < codeLine.length) {
           offendingCharacter = '\x1B[31m' + codeLine[firstColumn] + '\x1B[39m';
         } else {
           offendingCharacter = '';
         }
-  
+
         grunt.log.error(e);
         grunt.log.error('In file: ' + filepath);
         grunt.log.error('On line: ' + firstLine);
@@ -208,7 +212,7 @@ module.exports = function(grunt) {
     }
 
     writeFile(paths.dest, output.js);
-    writeFile(paths.destDir + paths.mapFileName, output.v3SourceMap);
+    writeFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
   };
 
   var warnOnEmptyFile = function (path) {
