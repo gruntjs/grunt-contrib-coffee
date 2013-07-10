@@ -139,7 +139,7 @@ module.exports = function(grunt) {
     // we need to sourceMappingURL to be relative to the js path
     var sourceMappingDir = paths.destDir.replace(/[^/]+/g, '..') + options.sourceMapDir;
     // Add sourceMappingURL to file footer
-    output.js = output.js + '\n/*\n//@ sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n*/';
+    output.js = output.js + '\n/*\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n*/';
   };
 
   var concatInput = function (files, options) {
