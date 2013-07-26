@@ -118,7 +118,7 @@ coffee: {
       join: true
     }
     files: {
-      'path/to/result.js': 'path/to/classCDependentOnB.coffee, 'path/to/classBDependentOnC.coffee', 'path/to/classC.coffee']
+      'path/to/result.js': 'path/to/classCDependentOnB.coffee', 'path/to/classBDependentOnC.coffee', 'path/to/classC.coffee']
     }
   }
 }
