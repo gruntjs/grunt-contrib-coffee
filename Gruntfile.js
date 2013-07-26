@@ -109,6 +109,15 @@ module.exports = function(grunt) {
           'tmp/maps/coffeeBare.js': ['test/fixtures/coffee1.coffee'],
           'tmp/maps/coffeeBareJoin.js': uniformConcatFixtures
         }
+      },
+      compileDependentClasses: {
+        options: {
+          join: true,
+          manageDependencies: true
+        },
+        files: {
+          'tmp/dependency/orderedClasses.js': ['test/fixtures/dependency/*.coffee']
+        }
       }
     },
 
