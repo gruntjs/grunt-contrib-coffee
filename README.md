@@ -57,7 +57,7 @@ Default: `false`
 
 Will order coffee files before compilation according to #_require className directive.
 
-```js
+```coffeescript
 # class C defined in classC.coffee
 class C
   
@@ -65,7 +65,7 @@ class C
 
 ```
 
-```js
+```coffeescript
 
 #_require C
 
@@ -76,7 +76,7 @@ class B extends C
 
 ```
 
-```js
+```coffeescript
 
 #_require B
 
