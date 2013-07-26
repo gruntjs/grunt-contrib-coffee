@@ -102,6 +102,29 @@ coffee: {
 }
 ```
 
+#### manageDependencies
+Type: `boolean`
+Default: `false`
+
+Will order coffee files before compilation according to #_require className directive. For more information about ordering process, please check https://github.com/Vizir/rehab.
+
+### Usage Examples
+
+```js
+coffee: {
+  compile: {
+    options: {
+      manageDependencies: true
+      join: true
+    }
+    files: {
+      'path/to/result.js': 'path/to/classCDependentOnB.coffee, 'path/to/classBDependentOnC.coffee', 'path/to/classC.coffee']
+    }
+  }
+}
+```
+result.js will contain the classes in (classA,classB,classC) order.
+
 For more examples on how to use the `expand` API to manipulate the default dynamic path construction in the `glob_to_multiple` examples, see "Building the files object dynamically" in the grunt wiki entry [Configuring Tasks](http://gruntjs.com/configuring-tasks).
 
 ## Release History
