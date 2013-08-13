@@ -14,6 +14,9 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
 
+    // Seems like only way to detect for dynamic mapping
+    var isMapping = this.data.files == null;
+
     var options = this.options({
       bare: false,
       join: false,
@@ -25,6 +28,9 @@ module.exports = function(grunt) {
 
     this.files.forEach(function (f) {
       var validFiles = removeInvalidFiles(f);
+      
+      // Dynamic mapping only
+      if (isMapping) f.dest = fixDest(f.src[0], f.dest);
 
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
@@ -39,6 +45,20 @@ module.exports = function(grunt) {
 
   var isLiterate = function (ext) {
     return (ext === ".litcoffee" || ext === ".md");
+  };
+
+  // Dest from Grunt is incorrect for file names that have
+  // dots in them in relation to coffeescript files
+  var extRgx = /\.(coffee|litcoffee|coffee\.md)$/;
+  var endRgx = /[^\/]*$/;
+  var fixDest = function (src, dest) {
+
+    // Remove coffeescript extension and replace with js
+    var filename = src.replace(extRgx, '.js').split(path.sep).pop();
+
+    // replace end of dest provided by grunt
+    dest = dest.replace(endRgx, filename);
+    return dest;
   };
 
   var removeInvalidFiles = function(files) {
