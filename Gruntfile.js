@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         files: {
           'tmp/default/coffee.js': ['test/fixtures/coffee1.coffee'],
           'tmp/default/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
-          'tmp/default/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
+          'tmp/default/readme.js': ['test/fixtures/readme.coffee.md'],
           'tmp/default/concat.js': mixedConcatFixtures
         }
       },
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         files: {
           'tmp/bare/coffee.js': ['test/fixtures/coffee1.coffee'],
           'tmp/bare/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
-          'tmp/bare/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
+          'tmp/bare/readme.js': ['test/fixtures/readme.coffee.md'],
           'tmp/bare/concat.js': mixedConcatFixtures
         }
       },
@@ -109,6 +109,13 @@ module.exports = function(grunt) {
           'tmp/maps/coffeeBare.js': ['test/fixtures/coffee1.coffee'],
           'tmp/maps/coffeeBareJoin.js': uniformConcatFixtures
         }
+      },
+      compileGlob: {
+        expand: true,
+        cwd: 'test/fixtures',
+        src: ['*.coffee', '*.litcoffee', '*.coffee.md'],
+        dest: 'tmp/glob',
+        ext: '.js'
       }
     },
 
