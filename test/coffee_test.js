@@ -1,5 +1,9 @@
 var grunt = require('grunt');
 var fs = require('fs');
+var path = require('path');
+
+var COFFEE_DIR = __dirname + '/fixtures';
+var TMP_DIR = path.join(__dirname, '..', '/tmp');
 
 function readFile(file) {
   'use strict';
@@ -36,8 +40,8 @@ exports.coffee = {
       'Should compile literate coffeescript to unwrapped javascript');
 
     assertFileEquality(test,
-      'tmp/bare/litcoffeemd.js',
-      'test/expected/bare/litcoffee.js',
+      'tmp/bare/readme.js',
+      'test/expected/bare/readme.js',
       'Should compile literate coffeescript to unwrapped javascript');
 
     assertFileEquality(test,
@@ -63,8 +67,8 @@ exports.coffee = {
       'Should compile literate coffeescript to wrapped javascript');
 
     assertFileEquality(test,
-      'tmp/default/litcoffeemd.js',
-      'test/expected/default/litcoffee.js',
+      'tmp/default/readme.js',
+      'test/expected/default/readme.js',
       'Should compile literate coffeescript to wrapped javascript');
 
     assertFileEquality(test,
@@ -182,6 +186,37 @@ exports.coffee = {
       'tmp/eachMap/litcoffee.js.map',
       'test/expected/eachMap/litcoffee.js.map',
       'Separate compilation of coffee and litcoffee files with source maps should generate map');
+
+    test.done();
+  },
+  compileGlob: function(test) {
+    'use strict'; 
+
+    var coffeeFiles = grunt.file.expand([
+      path.join(COFFEE_DIR, '*.coffee'),
+      path.join(COFFEE_DIR, '*.coffee.md'),
+      path.join(COFFEE_DIR, '*.litcoffee')
+    ]).map(function (f) {
+      // Strip out extensions since we are testing file names
+      f = path.basename(f, '.coffee');
+      f = path.basename(f, '.litcoffee');
+      return path.basename(f, '.coffee.md');
+    }).sort();
+
+    var jsFiles = grunt.file.expand([
+      path.join(TMP_DIR, '/glob/*.js')
+    ]).map(function (f) {
+      // Strip out extensions, we aren't testing for that
+      return path.basename(f, '.js');
+    }).sort();
+
+    test.equal(jsFiles.length, coffeeFiles.length, 'Expected as many JS files as CS files');
+
+    coffeeFiles.forEach(function (csFile, i) {
+      var jsFile = jsFiles[i];
+      test.equal(jsFile, csFile, 'Expected ' + jsFile + ' to equal ' + csFile);
+    });
+    
 
     test.done();
   }
