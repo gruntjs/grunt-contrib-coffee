@@ -30,7 +30,9 @@ module.exports = function(grunt) {
       var validFiles = removeInvalidFiles(f);
       
       // Dynamic mapping only
-      if (isMapping) f.dest = fixDest(f.src[0], f.dest);
+      if (isMapping) {
+        f.dest = fixDest(f.src[0], f.dest);
+      }
 
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
