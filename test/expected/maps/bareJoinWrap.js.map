@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "bareJoinWrapMap.js",
+  "sourceRoot": "",
+  "sources": [
+    "bareJoinWrapMap.src.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,CAAO,CAAU,CAAV,GAAP,CAAO,EAAC;CACN,KAAA,IAAA;CAAA,CAAM;CACJ;;CAAA,EAAO,CAAP,EAAA,IAAC;;CAAD;;CADF;CAAA,CAEA,CAAA,CAAA,GAAO;CACP,MAAA,EAAO;CAJF"
+}
