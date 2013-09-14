@@ -18,6 +18,7 @@ module.exports = function(grunt) {
       bare: false,
       join: false,
       sourceMap: false,
+      amdDefineWrap: false,
       separator: grunt.util.linefeed
     });
 
@@ -78,7 +79,7 @@ module.exports = function(grunt) {
     var mapOptions, filepath;
 
     if (files.length > 1) {
-      mapOptions = createOptionsForJoin(files, paths, options.separator);
+      mapOptions = createOptionsForJoin(files, paths, options);
     } else {
       mapOptions = createOptionsForFile(files[0], paths);
       filepath = files[0];
@@ -109,8 +110,8 @@ module.exports = function(grunt) {
     }
   };
 
-  var createOptionsForJoin = function (files, paths, separator) {
-    var code = concatFiles(files, separator);
+  var createOptionsForJoin = function (files, paths, options) {
+    var code = concatFiles(files, options.separator, options.amdDefineWrap);
     var targetFileName = paths.destName + '.src.coffee';
     grunt.file.write(paths.destDir + targetFileName, code);
 
@@ -121,12 +122,26 @@ module.exports = function(grunt) {
     };
   };
 
-  var concatFiles = function (files, separator) {
-    return files.map(function (filePath) {
+  var concatFiles = function (files, separator, amdDefineWrap) {
+    files = files.map(function (filePath) {
       return grunt.file.read(filePath);
-    }).join(grunt.util.normalizelf(separator));
+    });
+    if(amdDefineWrap) {
+      files.unshift('define (require, exports, module) ->');
+    }
+    var fileContent = files.join(grunt.util.normalizelf(separator));
+    if(amdDefineWrap) {
+      return indentFileContent(fileContent, separator);
+    }
+    return fileContent;
   };
-
+  
+  var indentFileContent = function(fileContent, separator) {
+    fileContent.split(separator).map(function (line) {
+      return "  " + line;
+    }).join(separator);
+  };
+  
   var createOptionsForFile = function (file, paths) {
     return {
       code: grunt.file.read(file),
@@ -145,7 +160,7 @@ module.exports = function(grunt) {
       return;
     }
 
-    var code = concatFiles(files, options.separator);
+    var code = concatFiles(files, options.separator, false);
     return compileCoffee(code, options);
   };
 
