@@ -21,7 +21,11 @@ module.exports = function(grunt) {
       amdDefineWrap: false,
       separator: grunt.util.linefeed
     });
-
+    
+    if(options.amdDefineWrap === true) {
+      options.bare = true;
+    }
+    
     grunt.verbose.writeflags(options, 'Options');
 
     this.files.forEach(function (f) {
@@ -30,7 +34,7 @@ module.exports = function(grunt) {
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         writeFileAndMap(paths, compileWithMaps(validFiles, options, paths));
-      } else if (options.join === true) {
+      } else if (options.join === true || options.amdDefineWrap) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {
         writeFile(f.dest, concatOutput(validFiles, options));
@@ -123,21 +127,19 @@ module.exports = function(grunt) {
   };
 
   var concatFiles = function (files, separator, amdDefineWrap) {
-    files = files.map(function (filePath) {
+    var fileContent = files.map(function (filePath) {
       return grunt.file.read(filePath);
-    });
+    }).join(grunt.util.normalizelf(separator));
     if(amdDefineWrap) {
-      files.unshift('define (require, exports, module) ->');
-    }
-    var fileContent = files.join(grunt.util.normalizelf(separator));
-    if(amdDefineWrap) {
-      return indentFileContent(fileContent, separator);
+      return 'define (require, exports, module) ->' +
+             separator +
+             indentFileContent(fileContent, separator);
     }
     return fileContent;
   };
   
   var indentFileContent = function(fileContent, separator) {
-    fileContent.split(separator).map(function (line) {
+    return fileContent.split(separator).map(function (line) {
       return "  " + line;
     }).join(separator);
   };
@@ -160,7 +162,7 @@ module.exports = function(grunt) {
       return;
     }
 
-    var code = concatFiles(files, options.separator, false);
+    var code = concatFiles(files, options.separator, options.amdDefineWrap);
     return compileCoffee(code, options);
   };
 

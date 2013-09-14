@@ -101,6 +101,23 @@ exports.coffee = {
 
     test.done();
   },
+  compileBareJoinedWrapped: function(test) {
+    'use strict';
+
+    test.expect(2);
+    
+    assertFileEquality(test,
+      'tmp/join/bareCoffeeWrap.js',
+      'test/expected/bare/coffeeWrap.js',
+      'Bare compilation of one file with join, wrap enabled should match bare compilation');
+    
+    assertFileEquality(test,
+      'tmp/join/bareJoinWrap.js',
+      'test/expected/join/bareJoinWrap.js',
+      'Compilation of multiple files with join, wrap enabled should match normal compilation');
+    
+    test.done();
+  },
   compileMaps: function(test) {
     'use strict';
 
