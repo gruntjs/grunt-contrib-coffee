@@ -164,13 +164,13 @@ module.exports = function(grunt) {
     }
 
     try {
-      return require('coffee-script').compile(code, options);
+      return (options['compiler'] || require('coffee-script')).compile(code, options);
     } catch (e) {
       if (e.location == null ||
           e.location.first_column == null ||
           e.location.first_line == null) {
         grunt.log.error('Got an unexpected exception ' +
-                        'from the coffee-script compiler. ' + 
+                        'from the coffee-script compiler. ' +
                         'The original exception was: ' +
                         e);
         grunt.log.error('(The coffee-script compiler should not raise *unexpected* exceptions. ' +
@@ -182,13 +182,13 @@ module.exports = function(grunt) {
         var codeLine = code.split('\n')[firstLine];
         var errorArrows = '\x1B[31m>>\x1B[39m ';
         var offendingCharacter;
-  
+
         if (firstColumn < codeLine.length) {
           offendingCharacter = '\x1B[31m' + codeLine[firstColumn] + '\x1B[39m';
         } else {
           offendingCharacter = '';
         }
-  
+
         grunt.log.error(e);
         grunt.log.error('In file: ' + filepath);
         grunt.log.error('On line: ' + firstLine);

@@ -184,5 +184,32 @@ exports.coffee = {
       'Separate compilation of coffee and litcoffee files with source maps should generate map');
 
     test.done();
-  }
+  },
+  compileCustomCompiler: function(test) {
+    'use strict';
+
+    test.expect(4);
+
+    assertFileEquality(test,
+      'tmp/customCompiler/coffee.js',
+      'test/expected/customCompiler/coffee.js',
+      'Should compile coffeescript to unwrapped javascript with user-specified compiler');
+
+    assertFileEquality(test,
+      'tmp/customCompiler/litcoffee.js',
+      'test/expected/customCompiler/litcoffee.js',
+      'Should compile literate coffeescript to unwrapped javascript with user-specified compiler');
+
+    assertFileEquality(test,
+      'tmp/customCompiler/litcoffeemd.js',
+      'test/expected/customCompiler/litcoffee.js',
+      'Should compile literate coffeescript to unwrapped javascript with user-specified compiler');
+
+    assertFileEquality(test,
+      'tmp/customCompiler/concat.js',
+      'test/expected/customCompiler/concat.js',
+      'Should compile coffeescript files without wrappers and concatenate them into a single javascript file with user-specified compiler');
+
+    test.done();
+  },
 };
