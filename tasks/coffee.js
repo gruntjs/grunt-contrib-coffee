@@ -164,7 +164,7 @@ module.exports = function(grunt) {
     }
 
     try {
-      return require('coffee-script').compile(code, options);
+      return grunt.util.normalizelf(require('coffee-script').compile(code, options));
     } catch (e) {
       if (e.location == null ||
           e.location.first_column == null ||
