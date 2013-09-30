@@ -13,5 +13,5 @@
 }).call(this);
 
 /*
-//@ sourceMappingURL=coffee1.js.map
+//# sourceMappingURL=coffee1.js.map
 */

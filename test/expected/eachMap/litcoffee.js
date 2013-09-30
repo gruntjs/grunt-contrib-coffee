@@ -8,5 +8,5 @@
 }).call(this);
 
 /*
-//@ sourceMappingURL=litcoffee.js.map
+//# sourceMappingURL=litcoffee.js.map
 */

@@ -10,5 +10,5 @@ HelloWorld = (function() {
 })();
 
 /*
-//@ sourceMappingURL=coffeeBare.js.map
+//# sourceMappingURL=coffeeBare.js.map
 */
