@@ -2,7 +2,7 @@
  * grunt-contrib-coffee
  * http://gruntjs.com/
  *
- * Copyright (c) 2012 Eric Woroshow, contributors
+ * Copyright (c) 2013 Eric Woroshow, contributors
  * Licensed under the MIT license.
  */
 
