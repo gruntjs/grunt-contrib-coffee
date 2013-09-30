@@ -15,5 +15,5 @@
 }).call(this);
 
 /*
-//# sourceMappingURL=coffeeJoin.js.map
+//@ sourceMappingURL=coffeeJoin.js.map
 */
