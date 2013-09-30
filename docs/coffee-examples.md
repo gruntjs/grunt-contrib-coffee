@@ -46,8 +46,18 @@ coffee: {
     src: ['*.coffee'],
     dest: 'path/to/dest/',
     ext: '.js'
+  },
+
+  alternate_compiler: {
+    options: {
+      compiler: require('coffee-script')
+    },
+    expand: true,
+    cwd: 'src',
+    dest: 'build',
+    src: ['**/*.coffee'],
+    ext: '.js'
   }
-}
 ```
 
 For more examples on how to use the `expand` API to manipulate the default dynamic path construction in the `glob_to_multiple` examples, see "Building the files object dynamically" in the grunt wiki entry [Configuring Tasks](http://gruntjs.com/configuring-tasks).

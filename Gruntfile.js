@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp/bare', 'tmp/default', 'tmp/join']
+      tests: ['tmp/bare', 'tmp/default', 'tmp/join', 'tmp/customCompiler']
     },
 
     // Configuration to be run (and then tested).
@@ -108,6 +108,18 @@ module.exports = function(grunt) {
         files: {
           'tmp/maps/coffeeBare.js': ['test/fixtures/coffee1.coffee'],
           'tmp/maps/coffeeBareJoin.js': uniformConcatFixtures
+        }
+      },
+      compileCustomCompiler: {
+        options: {
+          compiler: require('coffee-script'),
+          bare: true
+        },
+        files: {
+          'tmp/customCompiler/coffee.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/customCompiler/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
+          'tmp/customCompiler/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
+          'tmp/customCompiler/concat.js': mixedConcatFixtures
         }
       }
     },
