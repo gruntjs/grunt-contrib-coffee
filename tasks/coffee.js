@@ -20,7 +20,11 @@ module.exports = function(grunt) {
       sourceMap: false,
       separator: grunt.util.linefeed
     });
-
+    
+    if(options.amdDefineWrap) {
+      options.bare = true;
+    }
+    
     grunt.verbose.writeflags(options, 'Options');
 
     this.files.forEach(function (f) {
@@ -29,7 +33,7 @@ module.exports = function(grunt) {
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         writeFileAndMap(paths, compileWithMaps(validFiles, options, paths));
-      } else if (options.join === true) {
+      } else if (options.join === true || options.amdDefineWrap) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {
         writeFile(f.dest, concatOutput(validFiles, options));
@@ -78,7 +82,7 @@ module.exports = function(grunt) {
     var mapOptions, filepath;
 
     if (files.length > 1) {
-      mapOptions = createOptionsForJoin(files, paths, options.separator);
+      mapOptions = createOptionsForJoin(files, paths, options);
     } else {
       mapOptions = createOptionsForFile(files[0], paths);
       filepath = files[0];
@@ -109,8 +113,8 @@ module.exports = function(grunt) {
     }
   };
 
-  var createOptionsForJoin = function (files, paths, separator) {
-    var code = concatFiles(files, separator);
+  var createOptionsForJoin = function (files, paths, options) {
+    var code = concatFiles(files, options.separator, options.amdDefineWrap);
     var targetFileName = paths.destName + '.src.coffee';
     grunt.file.write(paths.destDir + targetFileName, code);
 
@@ -121,12 +125,25 @@ module.exports = function(grunt) {
     };
   };
 
-  var concatFiles = function (files, separator) {
-    return files.map(function (filePath) {
+  var concatFiles = function (files, separator, amdDefineWrap) {
+    var fileContent = files.map(function (filePath) {
       return grunt.file.read(filePath);
     }).join(grunt.util.normalizelf(separator));
+    if(amdDefineWrap) {
+      fileContent =  'define (require, exports, module) ->' +
+             separator +
+             indentFileContent(fileContent, separator);
+      fileContent += separator + "  return exports";
+    }
+    return fileContent;
   };
-
+  
+  var indentFileContent = function(fileContent, separator) {
+    return fileContent.split(separator).map(function (line) {
+      return "  " + line;
+    }).join(separator);
+  };
+  
   var createOptionsForFile = function (file, paths) {
     return {
       code: grunt.file.read(file),
@@ -145,7 +162,7 @@ module.exports = function(grunt) {
       return;
     }
 
-    var code = concatFiles(files, options.separator);
+    var code = concatFiles(files, options.separator, options.amdDefineWrap);
     return compileCoffee(code, options);
   };
 

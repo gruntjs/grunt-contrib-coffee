@@ -1,4 +1,4 @@
-# grunt-contrib-coffee [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.7.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -50,6 +50,17 @@ Type: `boolean`
 Default: `false`
 
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
+
+#### amdDefineWrap
+Type: `boolean`
+Default: false
+
+Will wrap joined CoffeeScript in a define function. Use to reuse CommonJS modules on the web.  If `true` is passed 'join' and 'bare' will both overridden to `true`.
+```js
+define (require, exports, module) ->
+  //bare, joined CoffeeScript here.
+  return exports
+```
 ### Usage Examples
 
 ```js
@@ -129,4 +140,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Apr 19 2013 09:49:08.*
+*This file was generated on Tue Sep 17 2013 15:17:34.*
