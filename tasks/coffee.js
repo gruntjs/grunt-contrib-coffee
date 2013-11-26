@@ -162,9 +162,23 @@ module.exports = function(grunt) {
       options.filename = filepath;
       options.literate = isLiterate(path.extname(filepath));
     }
+    var coffee;
 
     try {
-      return require('coffee-script').compile(code, options);
+      try {
+        coffee = require('coffee-script');
+      } catch (coffeeScriptError) {
+        try {
+          coffee = require('coffee-script-redux');
+        } catch (coffeeScriptReduxError) {
+          if (coffee == null) {
+            throw coffeeScriptError;
+          }
+        }
+      }
+
+      return coffee.compile(code, options);
+
     } catch (e) {
       if (e.location == null ||
           e.location.first_column == null ||
