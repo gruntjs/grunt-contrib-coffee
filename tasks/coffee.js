@@ -21,8 +21,6 @@ module.exports = function(grunt) {
       separator: grunt.util.linefeed
     });
 
-    grunt.verbose.writeflags(options, 'Options');
-
     this.files.forEach(function (f) {
       var validFiles = removeInvalidFiles(f);
 
