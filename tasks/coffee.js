@@ -135,7 +135,7 @@ module.exports = function(grunt) {
 
   var appendFooter = function (output, paths) {
     // Add sourceMappingURL to file footer
-    output.js = output.js + '\n/*\n//# sourceMappingURL=' + paths.mapFileName + '\n*/';
+    output.js = output.js + '\n\n//# sourceMappingURL=' + paths.mapFileName + '\n';
   };
 
   var concatInput = function (files, options) {
