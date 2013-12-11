@@ -21,6 +21,11 @@ module.exports = function(grunt) {
     'test/fixtures/coffee2.coffee'
   ];
 
+  var uniformLiterateConcatFixtures = [
+    'test/fixtures/litcoffee.litcoffee',
+    'test/fixtures/litcoffee2.litcoffee'
+  ];
+
   // Project configuration.
   grunt.initConfig({
     jshint: {
@@ -66,7 +71,8 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/join/coffee.js': ['test/fixtures/coffee1.coffee'],
-          'tmp/join/join.js': uniformConcatFixtures
+          'tmp/join/join.js': uniformConcatFixtures,
+          'tmp/join/litJoin.js': uniformLiterateConcatFixtures
         }
       },
       compileBareJoined: {
@@ -97,6 +103,18 @@ module.exports = function(grunt) {
           cwd: 'test/fixtures/',
           src: ['coffee1.coffee', 'litcoffee.litcoffee'],
           dest: 'tmp/eachMap/',
+          ext: '.js'
+        }]
+      },
+      compileEachLiterateMap: {
+        options: {
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/',
+          src: ['litcoffee.litcoffee'],
+          dest: 'tmp/eachLiterateMap/',
           ext: '.js'
         }]
       },

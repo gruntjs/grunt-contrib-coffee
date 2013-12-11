@@ -77,7 +77,7 @@ exports.coffee = {
   compileJoined: function(test) {
     'use strict';
 
-    test.expect(4);
+    test.expect(5);
 
     assertFileEquality(test,
       'tmp/join/coffee.js',
@@ -98,6 +98,11 @@ exports.coffee = {
       'tmp/join/bareJoin.js',
       'test/expected/join/bareJoin.js',
       'Bare compilation of multiple join files should be equivalent to concatenated compilation');
+
+    assertFileEquality(test,
+      'tmp/join/litJoin.js',
+      'test/expected/join/litJoin.js',
+      'Compilation of multiple literate coffee files should be equivalent to contatenated compilation.');
 
     test.done();
   },
@@ -182,6 +187,23 @@ exports.coffee = {
       'tmp/eachMap/litcoffee.js.map',
       'test/expected/eachMap/litcoffee.js.map',
       'Separate compilation of coffee and litcoffee files with source maps should generate map');
+
+    test.done();
+  },
+  compileEachLiterateMap: function(test) {
+    'use strict';
+
+    test.expect(2);
+
+    assertFileEquality(test,
+      'tmp/eachLiterateMap/litcoffee.js',
+      'test/expected/eachLiterateMap/litcoffee.js',
+      'Compilation of multiple literate coffee files with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/eachLiterateMap/litcoffee2.js',
+      'test/expected/eachLiterateMap/litcoffee2.js',
+      'Compilation of multiple literate coffee files with source maps should generate javascript');
 
     test.done();
   }
