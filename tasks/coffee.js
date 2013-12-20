@@ -11,11 +11,10 @@ module.exports = function(grunt) {
 
   var path = require('path');
   var _ = grunt.util._;
-  var options;
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
 
-    options = this.options({
+    var options = this.options({
       bare: false,
       join: false,
       sourceMap: false,
@@ -27,11 +26,13 @@ module.exports = function(grunt) {
 
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
-        writeFileAndMap(paths, compileWithMaps(validFiles, options, paths));
+        // add sourceMapDir to options object
+        options = _.extend({ sourceMapDir: paths.destDir }, options);
+        writeFileAndMap(paths, compileWithMaps(validFiles, options, paths), options);
       } else if (options.join === true) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {
-        writeFile(f.dest, concatOutput(validFiles));
+        writeFile(f.dest, concatOutput(validFiles, options));
       }
     });
   });
@@ -86,12 +87,11 @@ module.exports = function(grunt) {
     options = _.extend({
         generatedFile: path.basename(paths.dest),
         sourceRoot: mapOptions.sourceRoot,
-        sourceFiles: mapOptions.sourceFiles,
-        sourceMapDir: paths.destDir
+        sourceFiles: mapOptions.sourceFiles
       }, options);
 
     var output = compileCoffee(mapOptions.code, options, filepath);
-    appendFooter(output, paths);
+    appendFooter(output, paths, options);
     return output;
   };
 
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
     };
   };
 
-  var appendFooter = function (output, paths) {
+  var appendFooter = function (output, paths, options) {
     // we need to sourceMappingURL to be relative to the js path
     var sourceMappingDir = paths.destDir.replace(/[^/]+/g, '..') + options.sourceMapDir;
     // Add sourceMappingURL to file footer
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
     }
   };
 
-  var writeFileAndMap = function(paths, output) {
+  var writeFileAndMap = function(paths, output, options) {
     if (!output || output.js.length === 0) {
       warnOnEmptyFile(paths.dest);
       return;
