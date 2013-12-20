@@ -184,5 +184,22 @@ exports.coffee = {
       'Separate compilation of coffee and litcoffee files with source maps should generate map');
 
     test.done();
+  },
+  compileSourceMapDir: function(test) {
+    'use strict';
+
+    test.expect(2);
+
+    assertFileEquality(test,
+      'tmp/sourceMapDir1/coffee.js',
+      'test/expected/sourceMapDir1/coffee.js',
+      'Compilation of single file with source maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/sourceMapDir2/coffee.js.map',
+      'test/expected/sourceMapDir2/coffee.js.map',
+      'Compilation of single file with alternate source map dir should generate map');
+
+    test.done();
   }
 };
