@@ -21,4 +21,10 @@ When compiling multiple .coffee files into a single .js file, concatenate first.
 Type: `boolean`
 Default: `false`
 
-Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
+Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled
+
+## sourceMapDir
+Type: `String`
+Default: (same path as your compiled js files)
+
+Generated source map files will be created here.

@@ -39,6 +39,16 @@ coffee: {
     }
   },
 
+  compileWithMapsDir: {
+    options: {
+      sourceMap: true,
+      sourceMapDir: 'path/to/maps/' // source map files will be created here
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee'
+    }
+  }
+
   glob_to_multiple: {
     expand: true,
     flatten: true,
@@ -46,7 +56,8 @@ coffee: {
     src: ['*.coffee'],
     dest: 'path/to/dest/',
     ext: '.js'
-  }
+  },
+
 }
 ```
 
