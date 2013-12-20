@@ -12,5 +12,5 @@ HelloWorld = (function() {
 console.log('hi');
 
 /*
-//# sourceMappingURL=coffeeBareJoin.js.map
+//# sourceMappingURL=../../tmp/maps/coffeeBareJoin.js.map
 */
