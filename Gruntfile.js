@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp/bare', 'tmp/default', 'tmp/join']
+      tests: ['tmp/bare', 'tmp/default', 'tmp/join', 'tmp/sourceMapDir1', 'tmp/sourceMapDir2']
     },
 
     // Configuration to be run (and then tested).
@@ -86,6 +86,15 @@ module.exports = function(grunt) {
         files: {
           'tmp/maps/coffee.js': ['test/fixtures/coffee1.coffee'],
           'tmp/maps/coffeeJoin.js': uniformConcatFixtures
+        }
+      },
+      compileSourceMapDir: {
+        options: {
+          sourceMap: true,
+          sourceMapDir: 'tmp/sourceMapDir2/'
+        },
+        files: {
+          'tmp/sourceMapDir1/coffee.js': ['test/fixtures/coffee1.coffee']
         }
       },
       compileEachMap: {

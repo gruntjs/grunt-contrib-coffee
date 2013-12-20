@@ -50,6 +50,13 @@ Type: `boolean`
 Default: `false`
 
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
+
+#### sourceMapDir
+Type: `String`
+Default: (same path as your compiled js files)
+
+Generated source map files will be created here.
+
 ### Usage Examples
 
 ```js
@@ -88,6 +95,16 @@ coffee: {
     files: {
       'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
       'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // concat then compile into single file
+    }
+  },
+
+  compileWithMapsDir: {
+    options: {
+      sourceMap: true,
+      sourceMapDir: 'path/to/maps/' // source map files will be created here
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee'
     }
   },
 
