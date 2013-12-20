@@ -184,5 +184,17 @@ exports.coffee = {
       'Separate compilation of coffee and litcoffee files with source maps should generate map');
 
     test.done();
+  },
+  compileDependentClasses: function(test) {
+    'use strict';
+
+    test.expect(1);
+
+    assertFileEquality(test,
+      'tmp/dependency/orderedClasses.js',
+      'test/expected/dependency/orderedClasses.js',
+      'Compilation with manageDependencies flag should correctly order classes');
+
+    test.done();
   }
 };

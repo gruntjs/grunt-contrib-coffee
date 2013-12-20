@@ -50,6 +50,45 @@ Type: `boolean`
 Default: `false`
 
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled. The concatenated CoffeeScript is written into the output directory, and becomes the target for source mapping.
+
+#### manageDependencies
+Type: `boolean`
+Default: `false`
+
+Will order coffee files before compilation according to #_require className directive.
+
+```coffeescript
+# class C defined in classC.coffee
+class C
+  
+  c: () -> "c"
+
+```
+
+```coffeescript
+
+#_require C
+
+# class B defined in classB.coffee
+class B extends C
+  
+  b: () -> c() + "b"
+
+```
+
+```coffeescript
+
+#_require B
+
+# class A defined in classA.coffee
+class A extends B
+  
+  a: () -> b() + "a"
+
+```
+
+For more information about ordering process, please check https://github.com/Vizir/rehab.
+
 ### Usage Examples
 
 ```js
@@ -88,6 +127,17 @@ coffee: {
     files: {
       'path/to/result.js': 'path/to/source.coffee', // 1:1 compile
       'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // concat then compile into single file
+    }
+  },
+
+  compileWithDependencyManagement: {
+    options: {
+      manageDependencies: true
+      join: true
+    }
+    files: {
+      'path/to/result.js': 'path/to/classCDependentOnB.coffee', 'path/to/classBDependentOnC.coffee', 'path/to/classC.coffee']
+      // result.js will contain the classes in (classA,classB,classC) order.
     }
   },
 

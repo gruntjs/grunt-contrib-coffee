@@ -11,6 +11,7 @@ module.exports = function(grunt) {
 
   var path = require('path');
   var _ = grunt.util._;
+  var DependencyManagement = require('grunt-rehab');
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
 
@@ -23,6 +24,11 @@ module.exports = function(grunt) {
 
     this.files.forEach(function (f) {
       var validFiles = removeInvalidFiles(f);
+
+      if(options.manageDependencies === true){
+        var dm = new DependencyManagement();
+        validFiles = dm.processList(validFiles);
+      }
 
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
