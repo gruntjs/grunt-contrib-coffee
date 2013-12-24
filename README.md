@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.7.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.8.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -125,6 +125,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2013-12-24   v0.8.0   Support sourceMapDir
  * 2013-04-19   v0.7.0   Place Sourcemaps at bottom of file Change extension for Sourcemaps from .maps to .js.map
  * 2013-04-18   v0.6.7   Improved error reporting
  * 2013-04-08   v0.6.6   Fix regression with single-file compilation.
@@ -148,4 +149,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Tue Dec 24 2013 10:49:06.*
+*This file was generated on Tue Dec 24 2013 10:51:48.*

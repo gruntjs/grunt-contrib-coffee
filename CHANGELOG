@@ -1,3 +1,7 @@
+v0.8.0:
+  date: 2013-12-24
+  changes:
+    - Support sourceMapDir
 v0.7.0:
   date: 2013-04-19
   changes:
