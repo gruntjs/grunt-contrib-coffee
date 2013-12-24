@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-coffee",
   "description": "Compile CoffeeScript files to JavaScript.",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "homepage": "https://github.com/gruntjs/grunt-contrib-coffee",
   "author": {
     "name": "Grunt Team",
