@@ -212,20 +212,32 @@ module.exports = function(grunt) {
       return;
     }
 
-    writeFile(paths.dest, output.js);
-    writeFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
+    writeCompiledFile(paths.dest, output.js);
+    writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
   };
 
   var warnOnEmptyFile = function (path) {
-    grunt.log.warn('Destination (' + path + ') not written because compiled files were empty.');
+    grunt.log.warn('Destination "' + path + '" not written because compiled files were empty.');
   };
 
   var writeFile = function (path, output) {
     if (output.length < 1) {
       warnOnEmptyFile(path);
+      return false;
     } else {
       grunt.file.write(path, output);
+      return true;
+    }
+  };
+
+  var writeCompiledFile = function (path, output) {
+    if (writeFile(path, output)) {
       grunt.log.writeln('File ' + chalk.cyan(path) + ' created.');
+    }
+  };
+  var writeSourceMapFile = function (path, output) {
+    if (writeFile(path, output)) {
+      grunt.log.writeln('File ' + chalk.cyan(path) + ' created (source map).');
     }
   };
 };
