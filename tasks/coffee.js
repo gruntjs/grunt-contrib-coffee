@@ -6,9 +6,9 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function(grunt) {
-  'use strict';
+'use strict';
 
+module.exports = function(grunt) {
   var path = require('path');
   var chalk = require('chalk');
   var _ = grunt.util._;
@@ -22,7 +22,9 @@ module.exports = function(grunt) {
       separator: grunt.util.linefeed
     });
 
-    this.files.forEach(function (f) {
+    options.separator = grunt.util.normalizelf(options.separator);
+
+    this.files.forEach(function(f) {
       var validFiles = removeInvalidFiles(f);
 
       if (options.sourceMap === true) {
@@ -38,7 +40,7 @@ module.exports = function(grunt) {
     });
   });
 
-  var isLiterate = function (ext) {
+  var isLiterate = function(ext) {
     return (ext === ".litcoffee" || ext === ".md");
   };
 
@@ -53,7 +55,7 @@ module.exports = function(grunt) {
     });
   };
 
-  var createOutputPaths = function (destination) {
+  var createOutputPaths = function(destination) {
     var fileName = path.basename(destination, path.extname(destination));
     return {
       dest: destination,
@@ -63,7 +65,7 @@ module.exports = function(grunt) {
     };
   };
 
-  var appendTrailingSlash = function (path) {
+  var appendTrailingSlash = function(path) {
     if (path.length > 0) {
       return path + '/';
     } else {
@@ -71,7 +73,7 @@ module.exports = function(grunt) {
     }
   };
 
-  var compileWithMaps = function (files, options, paths) {
+  var compileWithMaps = function(files, options, paths) {
     if (!hasUniformExtensions(files)) {
       return;
     }
@@ -98,19 +100,17 @@ module.exports = function(grunt) {
 
   var hasUniformExtensions = function(files) {
     // get all extensions for input files
-    var ext = files.map(function (f) {
-      return path.extname(f);
-    });
+    var extensions = _.uniq(files.map(path.extname));
 
-    if(_.uniq(ext).length > 1) {
-      grunt.fail.warn('Join and sourceMap options require input files share the same extension (found '+_.uniq(ext).join(', ')+').');
+    if (extensions.length > 1) {
+      grunt.fail.warn('Join and sourceMap options require input files share the same extension (found ' + extensions.join(', ') + ').');
       return false;
     } else {
       return true;
     }
   };
 
-  var createOptionsForJoin = function (files, paths, separator) {
+  var createOptionsForJoin = function(files, paths, separator) {
     var code = concatFiles(files, separator);
     var targetFileName = paths.destName + '.src.coffee';
     grunt.file.write(paths.destDir + targetFileName, code);
@@ -122,13 +122,11 @@ module.exports = function(grunt) {
     };
   };
 
-  var concatFiles = function (files, separator) {
-    return files.map(function (filePath) {
-      return grunt.file.read(filePath);
-    }).join(grunt.util.normalizelf(separator));
+  var concatFiles = function(files, separator) {
+    return files.map(grunt.file.read).join(separator);
   };
 
-  var createOptionsForFile = function (file, paths) {
+  var createOptionsForFile = function(file, paths) {
     return {
       code: grunt.file.read(file),
       sourceFiles: [path.basename(file)],
@@ -136,14 +134,14 @@ module.exports = function(grunt) {
     };
   };
 
-  var appendFooter = function (output, paths, options) {
-    // we need to sourceMappingURL to be relative to the js path
+  var appendFooter = function(output, paths, options) {
+    // we need sourceMappingURL to be relative to the js path
     var sourceMappingDir = paths.destDir.replace(/[^/]+/g, '..') + options.sourceMapDir;
-    // Add sourceMappingURL to file footer
+    // add sourceMappingURL to file footer
     output.js = output.js + '\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n';
   };
 
-  var concatInput = function (files, options) {
+  var concatInput = function(files, options) {
     if (!hasUniformExtensions(files)) {
       return;
     }
@@ -156,12 +154,12 @@ module.exports = function(grunt) {
     return files.map(function(filepath) {
       var code = grunt.file.read(filepath);
       return compileCoffee(code, options, filepath);
-    }).join(grunt.util.normalizelf(options.separator));
+    }).join(options.separator);
   };
 
   var compileCoffee = function(code, options, filepath) {
     var coffeeOptions = _.clone(options);
-    if(filepath) {
+    if (filepath) {
       coffeeOptions.filename = filepath;
       coffeeOptions.literate = isLiterate(path.extname(filepath));
     }
@@ -195,7 +193,7 @@ module.exports = function(grunt) {
         grunt.log.error(e);
         grunt.log.error('In file: ' + filepath);
         grunt.log.error('On line: ' + firstLine);
-        // Log erroneous line and highlight offending character
+        // log erroneous line and highlight offending character
         // grunt.log.error trims whitespace so we have to use grunt.log.writeln
         grunt.log.writeln(errorArrows + codeLine.substring(0, firstColumn) +
                           offendingCharacter + codeLine.substring(firstColumn + 1));
@@ -216,11 +214,11 @@ module.exports = function(grunt) {
     writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
   };
 
-  var warnOnEmptyFile = function (path) {
+  var warnOnEmptyFile = function(path) {
     grunt.log.warn('Destination "' + path + '" not written because compiled files were empty.');
   };
 
-  var writeFile = function (path, output) {
+  var writeFile = function(path, output) {
     if (output.length < 1) {
       warnOnEmptyFile(path);
       return false;
@@ -230,12 +228,12 @@ module.exports = function(grunt) {
     }
   };
 
-  var writeCompiledFile = function (path, output) {
+  var writeCompiledFile = function(path, output) {
     if (writeFile(path, output)) {
       grunt.log.writeln('File ' + chalk.cyan(path) + ' created.');
     }
   };
-  var writeSourceMapFile = function (path, output) {
+  var writeSourceMapFile = function(path, output) {
     if (writeFile(path, output)) {
       grunt.log.writeln('File ' + chalk.cyan(path) + ' created (source map).');
     }
