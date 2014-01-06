@@ -10,6 +10,7 @@ module.exports = function(grunt) {
   'use strict';
 
   var path = require('path');
+  var chalk = require('chalk');
   var _ = grunt.util._;
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
@@ -182,11 +183,11 @@ module.exports = function(grunt) {
         var firstColumn = e.location.first_column;
         var firstLine = e.location.first_line;
         var codeLine = code.split('\n')[firstLine];
-        var errorArrows = '\x1B[31m>>\x1B[39m ';
+        var errorArrows = chalk.red('>>') + ' ';
         var offendingCharacter;
 
         if (firstColumn < codeLine.length) {
-          offendingCharacter = '\x1B[31m' + codeLine[firstColumn] + '\x1B[39m';
+          offendingCharacter = chalk.red(codeLine[firstColumn]);
         } else {
           offendingCharacter = '';
         }
@@ -199,7 +200,7 @@ module.exports = function(grunt) {
         grunt.log.writeln(errorArrows + codeLine.substring(0, firstColumn) +
                           offendingCharacter + codeLine.substring(firstColumn + 1));
         grunt.log.writeln(errorArrows + grunt.util.repeat(firstColumn, ' ') +
-                          '\x1B[31m^\x1B[39m ');
+                          chalk.red('^'));
       }
       grunt.fail.warn('CoffeeScript failed to compile.');
     }
@@ -224,7 +225,7 @@ module.exports = function(grunt) {
       warnOnEmptyFile(path);
     } else {
       grunt.file.write(path, output);
-      grunt.log.writeln('File ' + path.cyan + ' created.');
+      grunt.log.writeln('File ' + chalk.cyan(path) + ' created.');
     }
   };
 };
