@@ -201,5 +201,32 @@ exports.coffee = {
       'Compilation of single file with alternate source map dir should generate map');
 
     test.done();
+  },
+  compileMapsInsideDirHierarchy: function(test) {
+    'use strict';
+
+    test.expect(4);
+
+    assertFileEquality(test,
+      'tmp/mapsInsideDirHierarchy/dir1/coffee1.js',
+      'test/expected/mapsInsideDirHierarchy/dir1/coffee1.js',
+      'Expanded sources compilation with enabled source map should write js into appropriate directory');
+
+    assertFileEquality(test,
+      'tmp/mapsInsideDirHierarchy/dir2/litcoffee.js',
+      'test/expected/mapsInsideDirHierarchy/dir2/litcoffee.js',
+      'Expanded sources compilation with enabled source map should write map into javascript directory by default');
+
+    assertFileEquality(test,
+      'tmp/mapsInsideDirHierarchy/dir1/coffee1.js.map',
+      'test/expected/mapsInsideDirHierarchy/dir1/coffee1.js.map',
+      'Expanded sources compilation with enabled source map should write js into appropriate directory');
+
+    assertFileEquality(test,
+      'tmp/mapsInsideDirHierarchy/dir2/litcoffee.js.map',
+      'test/expected/mapsInsideDirHierarchy/dir2/litcoffee.js.map',
+      'Expanded sources compilation with enabled source map should write map into javascript directory by default');
+
+    test.done();
   }
 };

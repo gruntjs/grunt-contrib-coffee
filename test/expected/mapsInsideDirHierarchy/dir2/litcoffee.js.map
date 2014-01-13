@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "litcoffee.js",
+  "sourceRoot": "../../../test/fixtures/dirHierarchy/dir2/",
+  "sources": [
+    "litcoffee.coffee.md"
+  ],
+  "names": [],
+  "mappings": "AAEI;CAAA,KAAA,EAAA;;CAAA,CAAA,CAAW,KAAX,CAAW;CAID,EAAR,CAAA,GAAO,IAAP;CAJF,EAAW;CAAX"
+}

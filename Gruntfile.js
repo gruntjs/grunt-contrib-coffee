@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp/bare', 'tmp/default', 'tmp/join', 'tmp/sourceMapDir1', 'tmp/sourceMapDir2']
+      tests: ['tmp/bare', 'tmp/default', 'tmp/join', 'tmp/sourceMapDir1', 'tmp/sourceMapDir2', 'tmp/mapsInsideDirHierarchy']
     },
 
     // Configuration to be run (and then tested).
@@ -96,6 +96,18 @@ module.exports = function(grunt) {
         files: {
           'tmp/sourceMapDir1/coffee.js': ['test/fixtures/coffee1.coffee']
         }
+      },
+      compileMapsInsideDirHierarchy: {
+        options: {
+          sourceMap: true
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/dirHierarchy',
+          src: '**/*.{coffee,coffee.md}',
+          dest: 'tmp/mapsInsideDirHierarchy/',
+          ext: '.js'
+        }]
       },
       compileEachMap: {
         options: {

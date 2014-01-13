@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
 
-    var options = this.options({
+    var taskOptions = this.options({
       bare: false,
       join: false,
       sourceMap: false,
@@ -25,15 +25,15 @@ module.exports = function(grunt) {
     this.files.forEach(function (f) {
       var validFiles = removeInvalidFiles(f);
 
-      if (options.sourceMap === true) {
+      if (taskOptions.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         // add sourceMapDir to options object
-        options = _.extend({ sourceMapDir: paths.destDir }, options);
-        writeFileAndMap(paths, compileWithMaps(validFiles, options, paths), options);
-      } else if (options.join === true) {
-        writeFile(f.dest, concatInput(validFiles, options));
+        var outputOptions = _.extend({ sourceMapDir: paths.destDir }, taskOptions);
+        writeFileAndMap(paths, compileWithMaps(validFiles, outputOptions, paths), outputOptions);
+      } else if (taskOptions.join === true) {
+        writeFile(f.dest, concatInput(validFiles, taskOptions));
       } else {
-        writeFile(f.dest, concatOutput(validFiles, options));
+        writeFile(f.dest, concatOutput(validFiles, taskOptions));
       }
     });
   });
