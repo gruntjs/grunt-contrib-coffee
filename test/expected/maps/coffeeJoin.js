@@ -14,6 +14,4 @@
 
 }).call(this);
 
-/*
 //# sourceMappingURL=../../tmp/maps/coffeeJoin.js.map
-*/
