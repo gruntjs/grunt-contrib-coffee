@@ -12,6 +12,4 @@
 
 }).call(this);
 
-/*
 //# sourceMappingURL=../../tmp/sourceMapDir2/coffee.js.map
-*/

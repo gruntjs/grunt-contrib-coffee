@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "coffee-script": "~1.6.2",
+    "coffee-script": "~1.6.3",
     "chalk": "~0.4.0"
   },
   "devDependencies": {
