@@ -28,8 +28,8 @@ module.exports = function(grunt) {
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         // add sourceMapDir to options object
-        options = _.extend({ sourceMapDir: paths.destDir }, options);
-        writeFileAndMap(paths, compileWithMaps(validFiles, options, paths), options);
+        var fileOptions = _.extend({ sourceMapDir: paths.destDir }, options);
+        writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
       } else if (options.join === true) {
         writeFile(f.dest, concatInput(validFiles, options));
       } else {

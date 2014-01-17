@@ -201,5 +201,22 @@ exports.coffee = {
       'Compilation of single file with alternate source map dir should generate map');
 
     test.done();
+  },
+  compileNested: function(test) {
+    'use strict';
+
+    test.expect(2);
+
+    assertFileEquality(test,
+      'tmp/nest/1/coffee.js.map',
+      'test/expected/maps/coffeeNested.js.map',
+      'Compilation of nested maps should respect path info');
+
+    assertFileEquality(test,
+      'tmp/nest/2/coffee.js.map',
+      'test/expected/maps/coffeeNested.js.map',
+      'Compilation of nested maps should change per file');
+
+    test.done();
   }
 };
