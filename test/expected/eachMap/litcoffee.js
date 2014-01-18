@@ -7,6 +7,4 @@
 
 }).call(this);
 
-/*
 //# sourceMappingURL=../../tmp/eachMap/litcoffee.js.map
-*/
