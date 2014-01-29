@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       bare: false,
       join: false,
       sourceMap: false,
-      separator: grunt.util.linefeed
+      separator: grunt.util.linefeed,
     });
 
     options.separator = grunt.util.normalizelf(options.separator);
@@ -87,10 +87,10 @@ module.exports = function(grunt) {
     }
 
     options = _.extend({
-        generatedFile: path.basename(paths.dest),
-        sourceRoot: mapOptions.sourceRoot,
-        sourceFiles: mapOptions.sourceFiles
-      }, options);
+      generatedFile: path.basename(paths.dest),
+      sourceRoot: mapOptions.sourceRoot,
+      sourceFiles: mapOptions.sourceFiles
+    }, options);
 
     var output = compileCoffee(mapOptions.code, options, filepath);
     appendFooter(output, paths, options);
@@ -141,12 +141,10 @@ module.exports = function(grunt) {
   };
 
   var concatInput = function(files, options) {
-    if (!hasUniformExtensions(files)) {
-      return;
+    if (hasUniformExtensions(files)) {
+      var code = concatFiles(files, options.separator);
+      return compileCoffee(code, options);
     }
-
-    var code = concatFiles(files, options.separator);
-    return compileCoffee(code, options);
   };
 
   var concatOutput = function(files, options) {

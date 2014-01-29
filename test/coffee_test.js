@@ -1,28 +1,23 @@
+'use strict';
+
 var grunt = require('grunt');
-var fs = require('fs');
 
 function readFile(file) {
-  'use strict';
-
   var contents = grunt.file.read(file);
-
   if (process.platform === 'win32') {
     contents = contents.replace(/\r\n/g, '\n');
   }
-
   return contents;
 }
 
 function assertFileEquality(test, pathToActual, pathToExpected, message) {
-    var actual = readFile(pathToActual);
-    var expected = readFile(pathToExpected);
-    test.equal(expected, actual, message);
+  var actual = readFile(pathToActual);
+  var expected = readFile(pathToExpected);
+  test.equal(expected, actual, message);
 }
 
 exports.coffee = {
   compileBare: function(test) {
-    'use strict';
-
     test.expect(4);
 
     assertFileEquality(test,
@@ -48,8 +43,6 @@ exports.coffee = {
     test.done();
   },
   compileDefault: function(test) {
-    'use strict';
-
     test.expect(4);
 
     assertFileEquality(test,
@@ -75,8 +68,6 @@ exports.coffee = {
     test.done();
   },
   compileJoined: function(test) {
-    'use strict';
-
     test.expect(4);
 
     assertFileEquality(test,
@@ -102,8 +93,6 @@ exports.coffee = {
     test.done();
   },
   compileMaps: function(test) {
-    'use strict';
-
     test.expect(10);
 
     assertFileEquality(test,
@@ -159,8 +148,6 @@ exports.coffee = {
     test.done();
   },
   compileEachMap: function(test) {
-    'use strict';
-
     test.expect(4);
 
     assertFileEquality(test,
@@ -186,8 +173,6 @@ exports.coffee = {
     test.done();
   },
   compileSourceMapDir: function(test) {
-    'use strict';
-
     test.expect(2);
 
     assertFileEquality(test,
@@ -203,8 +188,6 @@ exports.coffee = {
     test.done();
   },
   compileNested: function(test) {
-    'use strict';
-
     test.expect(2);
 
     assertFileEquality(test,
@@ -218,5 +201,5 @@ exports.coffee = {
       'Compilation of nested maps should change per file');
 
     test.done();
-  }
+  },
 };
