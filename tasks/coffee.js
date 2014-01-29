@@ -11,10 +11,9 @@
 module.exports = function(grunt) {
   var path = require('path');
   var chalk = require('chalk');
-  var _ = grunt.util._;
+  var _ = require('lodash');
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
-
     var options = this.options({
       bare: false,
       join: false,
