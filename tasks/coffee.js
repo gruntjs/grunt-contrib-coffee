@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       if (options.sourceMap === true) {
         var paths = createOutputPaths(f.dest);
         // add sourceMapDir to options object
-        var fileOptions = _.extend({ sourceMapDir: paths.destDir }, options);
+        var fileOptions = _.extend({ sourceMapDir: paths.destDir, httpRootDir: '' }, options);
         writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
       } else if (options.join === true) {
         writeFile(f.dest, concatInput(validFiles, options));
@@ -135,7 +135,9 @@ module.exports = function(grunt) {
 
   var appendFooter = function(output, paths, options) {
     // we need sourceMappingURL to be relative to the js path
-    var sourceMappingDir = paths.destDir.replace(/[^/]+/g, '..') + options.sourceMapDir;
+    var destDir = path.relative(options.httpRootDir, paths.destDir) + '/';
+    var sourceMapDir = path.relative(options.httpRootDir, options.sourceMapDir) + '/';
+    var sourceMappingDir = destDir.replace(/[^/]+/g, '..') + sourceMapDir;
     // add sourceMappingURL to file footer
     output.js = output.js + '\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n';
   };
