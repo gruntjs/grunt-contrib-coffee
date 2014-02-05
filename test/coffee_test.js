@@ -202,4 +202,14 @@ exports.coffee = {
 
     test.done();
   },
+  compileHttpRootDir: function(test) {
+    test.expect(1);
+
+    assertFileEquality(test,
+      'tmp/httpRootDir/coffee.js',
+      'test/expected/httpRootDir/coffee.js',
+      'Compilation with the httpRootDir option should output the correct relative sourceMappingUrl');
+
+    test.done();
+  }
 };
