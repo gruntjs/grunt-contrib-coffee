@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.9.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.10.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
 > Compile CoffeeScript files to JavaScript.
 
