@@ -64,11 +64,11 @@ module.exports = function(grunt) {
     };
   };
 
-  var appendTrailingSlash = function(path) {
-    if (path.length > 0) {
-      return path + '/';
+  var appendTrailingSlash = function(dirname) {
+    if (dirname.length > 0) {
+      return dirname + path.sep;
     } else {
-      return path;
+      return dirname;
     }
   };
 
