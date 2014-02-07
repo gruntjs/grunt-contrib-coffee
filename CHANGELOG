@@ -1,3 +1,7 @@
+v0.10.0:
+  date: 2014-02-07
+  changes:
+    - SourceMappingURL calculated correctly
 v0.9.0:
   date: 2014-01-29
   changes:

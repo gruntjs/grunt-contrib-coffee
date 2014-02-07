@@ -125,6 +125,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2014-02-07   v0.10.0   SourceMappingURL calculated correctly
  * 2014-01-29   v0.9.0   Source mapping fixes. Update coffee-script to 1.7.0 Use lodash directly instead of deprecated grunt.util._
  * 2014-01-17   v0.8.2   Force coffeescript 1.6.3 Use new sourceMappingUrl syntax.
  * 2014-01-17   v0.8.1   Fix sourcemap regression.
@@ -152,4 +153,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Wed Jan 29 2014 09:57:09.*
+*This file was generated on Fri Feb 07 2014 09:28:02.*
