@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.9.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.10.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -153,4 +153,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Feb 07 2014 09:28:02.*
+*This file was generated on Fri Feb 07 2014 14:58:03.*
