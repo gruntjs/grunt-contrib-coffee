@@ -134,9 +134,9 @@ module.exports = function(grunt) {
   };
 
   var appendFooter = function(output, paths, options) {
-    // we need sourceMappingURL to be relative to the js path
-    var sourceMappingDir = paths.destDir.replace(/[^/]+/g, '..') + options.sourceMapDir;
-    // add sourceMappingURL to file footer
+    // We need the sourceMappingURL to be relative to the JS path
+    var sourceMappingDir = appendTrailingSlash(path.relative(paths.destDir, options.sourceMapDir));
+    // Add sourceMappingURL to file footer
     output.js = output.js + '\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n';
   };
 

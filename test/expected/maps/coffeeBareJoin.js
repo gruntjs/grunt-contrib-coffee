@@ -11,4 +11,4 @@ HelloWorld = (function() {
 
 console.log('hi');
 
-//# sourceMappingURL=../../tmp/maps/coffeeBareJoin.js.map
+//# sourceMappingURL=coffeeBareJoin.js.map

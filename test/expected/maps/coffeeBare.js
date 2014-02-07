@@ -9,4 +9,4 @@ HelloWorld = (function() {
 
 })();
 
-//# sourceMappingURL=../../tmp/maps/coffeeBare.js.map
+//# sourceMappingURL=coffeeBare.js.map
