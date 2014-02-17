@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.10.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.10.1 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -56,6 +56,12 @@ Type: `String`
 Default: (same path as your compiled js files)
 
 Generated source map files will be created here.
+
+#### joinExt
+Type: `String`
+Default: '.src.coffee'
+
+Resulting extension when joining multiple CoffeeScript files.
 
 ### Usage Examples
 
@@ -120,7 +126,7 @@ coffee: {
 }
 ```
 
-For more examples on how to use the `expand` API to manipulate the default dynamic path construction in the `glob_to_multiple` examples, see "Building the files object dynamically" in the grunt wiki entry [Configuring Tasks](http://gruntjs.com/configuring-tasks).
+For more examples on how to use the `expand` API to manipulate the default dynamic path construction in the `glob_to_multiple` examples, see "[Building the files object dynamically](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically)" in the grunt wiki entry [Configuring Tasks](http://gruntjs.com/configuring-tasks).
 
 
 ## Release History
@@ -153,4 +159,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Feb 07 2014 14:58:03.*
+*This file was generated on Mon Feb 17 2014 15:32:05.*

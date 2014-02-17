@@ -28,3 +28,9 @@ Type: `String`
 Default: (same path as your compiled js files)
 
 Generated source map files will be created here.
+
+## joinExt
+Type: `String`
+Default: '.src.coffee'
+
+Resulting extension when joining multiple CoffeeScript files.
