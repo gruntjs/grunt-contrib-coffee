@@ -18,7 +18,8 @@ module.exports = function(grunt) {
       bare: false,
       join: false,
       sourceMap: false,
-      separator: grunt.util.linefeed,
+      joinExt: '.src.coffee',
+      separator: grunt.util.linefeed
     });
 
     options.separator = grunt.util.normalizelf(options.separator);
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
     var mapOptions, filepath;
 
     if (files.length > 1) {
-      mapOptions = createOptionsForJoin(files, paths, options.separator);
+      mapOptions = createOptionsForJoin(files, paths, options.separator, options.joinExt);
     } else {
       mapOptions = createOptionsForFile(files[0], paths);
       filepath = files[0];
@@ -109,9 +110,9 @@ module.exports = function(grunt) {
     }
   };
 
-  var createOptionsForJoin = function(files, paths, separator) {
+  var createOptionsForJoin = function (files, paths, separator, joinExt) {
     var code = concatFiles(files, separator);
-    var targetFileName = paths.destName + '.src.coffee';
+    var targetFileName = paths.destName + joinExt;
     grunt.file.write(paths.destDir + targetFileName, code);
 
     return {
