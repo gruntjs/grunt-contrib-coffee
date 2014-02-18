@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       compileSourceMapDir: {
         options: {
           sourceMap: true,
-          sourceMapDir: 'tmp/sourceMapDir2/'
+          sourceMapDir: 'tmp/sourceMapDir2'
         },
         files: {
           'tmp/sourceMapDir1/coffee.js': ['test/fixtures/coffee1.coffee']

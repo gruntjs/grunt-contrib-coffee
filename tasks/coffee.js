@@ -66,7 +66,7 @@ module.exports = function(grunt) {
   };
 
   var appendTrailingSlash = function(dirname) {
-    if (dirname.length > 0) {
+    if (dirname.length > 0 && dirname.slice(-1) !== path.sep) {
       return dirname + path.sep;
     } else {
       return dirname;
@@ -209,6 +209,7 @@ module.exports = function(grunt) {
     }
 
     writeCompiledFile(paths.dest, output.js);
+    options.sourceMapDir = appendTrailingSlash(options.sourceMapDir);
     writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
   };
 
