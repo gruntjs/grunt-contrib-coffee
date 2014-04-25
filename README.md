@@ -114,12 +114,23 @@ coffee: {
     }
   }
 
+  //compiles all path/from/**/XX.coffee to path/to/dest/XX.js
   glob_to_multiple: {
     expand: true,
     flatten: true,
-    cwd: 'path/to',
-    src: ['*.coffee'],
-    dest: 'path/to/dest/',
+    cwd: 'path/from',
+    src: '**/*.coffee',
+    dest: 'path/to',
+    ext: '.js'
+  },
+
+  //compiles all path/from/**/XX.coffee to path/to/**/XX.js 
+  //if cwd and dest are same, the javascript output will be created alongside the coffeescript src
+  glob_to_multiple: {
+    expand: true,
+    cwd: 'path/from',
+    src: '**/*.coffee',
+    dest: 'path/to/',
     ext: '.js'
   },
 
