@@ -19,7 +19,8 @@ module.exports = function(grunt) {
       join: false,
       sourceMap: false,
       joinExt: '.src.coffee',
-      separator: grunt.util.linefeed
+      separator: grunt.util.linefeed,
+      suppressLogging: false
     });
 
     options.separator = grunt.util.normalizelf(options.separator);
@@ -33,9 +34,9 @@ module.exports = function(grunt) {
         var fileOptions = _.extend({ sourceMapDir: paths.destDir }, options);
         writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
       } else if (options.join === true) {
-        writeCompiledFile(f.dest, concatInput(validFiles, options));
+        writeCompiledFile(f.dest, concatInput(validFiles, options), options.suppressLogging);
       } else {
-        writeCompiledFile(f.dest, concatOutput(validFiles, options));
+        writeCompiledFile(f.dest, concatOutput(validFiles, options), options.suppressLogging);
       }
     });
   });
@@ -208,9 +209,9 @@ module.exports = function(grunt) {
       return;
     }
 
-    writeCompiledFile(paths.dest, output.js);
+    writeCompiledFile(paths.dest, output.js, options.suppressLogging);
     options.sourceMapDir = appendTrailingSlash(options.sourceMapDir);
-    writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
+    writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap, options.suppressLogging);
   };
 
   var warnOnEmptyFile = function(path) {
@@ -227,13 +228,13 @@ module.exports = function(grunt) {
     }
   };
 
-  var writeCompiledFile = function(path, output) {
-    if (writeFile(path, output)) {
+  var writeCompiledFile = function(path, output, suppressLogging) {
+    if (writeFile(path, output) && !suppressLogging) {
       grunt.log.writeln('File ' + chalk.cyan(path) + ' created.');
     }
   };
-  var writeSourceMapFile = function(path, output) {
-    if (writeFile(path, output)) {
+  var writeSourceMapFile = function(path, output, suppressLogging) {
+    if (writeFile(path, output) && !suppressLogging) {
       grunt.log.writeln('File ' + chalk.cyan(path) + ' created (source map).');
     }
   };
