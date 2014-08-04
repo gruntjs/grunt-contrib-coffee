@@ -229,12 +229,12 @@ module.exports = function(grunt) {
 
   var writeCompiledFile = function(path, output) {
     if (writeFile(path, output)) {
-      grunt.log.writeln('File ' + chalk.cyan(path) + ' created.');
+      grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created.');
     }
   };
   var writeSourceMapFile = function(path, output) {
     if (writeFile(path, output)) {
-      grunt.log.writeln('File ' + chalk.cyan(path) + ' created (source map).');
+      grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created (source map).');
     }
   };
 };
