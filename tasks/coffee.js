@@ -13,6 +13,11 @@ module.exports = function(grunt) {
   var chalk = require('chalk');
   var _ = require('lodash');
 
+  var actionCounts = {
+    fileCreated: 0,
+    mapCreated: 0
+  };
+
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
       bare: false,
@@ -38,6 +43,10 @@ module.exports = function(grunt) {
         writeCompiledFile(f.dest, concatOutput(validFiles, options));
       }
     });
+
+    grunt.log.writeln(actionCounts.fileCreated + ' files created.');
+    grunt.log.writeln(actionCounts.mapCreated + ' source map files created.');
+
   });
 
   var isLiterate = function(ext) {
@@ -229,11 +238,13 @@ module.exports = function(grunt) {
 
   var writeCompiledFile = function(path, output) {
     if (writeFile(path, output)) {
+      actionCounts.fileCreated++;
       grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created.');
     }
   };
   var writeSourceMapFile = function(path, output) {
     if (writeFile(path, output)) {
+      actionCounts.mapCreated++;
       grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created (source map).');
     }
   };
