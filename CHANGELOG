@@ -1,3 +1,9 @@
+v0.11.0:
+  date: 2014-08-06
+  changes:
+    - Adds summary containing number of files created.
+    - Move file creation logging to grunt.verbose.
+    - Updates Chalk to 0.5.
 v0.10.0:
   date: 2014-02-07
   changes:

@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.11.0-pre [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.11.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -131,6 +131,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2014-08-06   v0.11.0   Adds summary containing number of files created. Move file creation logging to grunt.verbose. Updates Chalk to 0.5.
  * 2014-02-07   v0.10.0   SourceMappingURL calculated correctly
  * 2014-01-29   v0.9.0   Source mapping fixes. Update coffee-script to 1.7.0 Use lodash directly instead of deprecated grunt.util._
  * 2014-01-17   v0.8.2   Force coffeescript 1.6.3 Use new sourceMappingUrl syntax.
@@ -159,4 +160,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Sun Jul 13 2014 11:56:26.*
+*This file was generated on Wed Aug 06 2014 15:34:17.*
