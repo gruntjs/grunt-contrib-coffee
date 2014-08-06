@@ -44,8 +44,10 @@ module.exports = function(grunt) {
       }
     });
 
-    grunt.log.writeln(actionCounts.fileCreated + ' files created.');
-    grunt.log.writeln(actionCounts.mapCreated + ' source map files created.');
+    grunt.log.ok(actionCounts.fileCreated + ' files created.');
+    if (actionCounts.mapCreated > 0) {
+      grunt.log.ok(actionCounts.mapCreated + ' source map files created.');
+    }
 
   });
 
