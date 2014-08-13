@@ -13,10 +13,14 @@ module.exports = function(grunt) {
   var chalk = require('chalk');
   var _ = require('lodash');
 
-  var actionCounts = {
-    fileCreated: 0,
-    mapCreated: 0
+  var actionCounts = {};
+  var resetCounts = function() {
+    actionCounts = {
+      fileCreated: 0,
+      mapCreated: 0
+    };
   };
+  resetCounts();
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
@@ -48,6 +52,7 @@ module.exports = function(grunt) {
     if (actionCounts.mapCreated > 0) {
       grunt.log.ok(actionCounts.mapCreated + ' source map files created.');
     }
+    resetCounts();
 
   });
 
