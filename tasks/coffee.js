@@ -13,15 +13,6 @@ module.exports = function(grunt) {
   var chalk = require('chalk');
   var _ = require('lodash');
 
-  var actionCounts = {};
-  var resetCounts = function() {
-    actionCounts = {
-      fileCreated: 0,
-      mapCreated: 0
-    };
-  };
-  resetCounts();
-
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
       bare: false,
@@ -30,6 +21,10 @@ module.exports = function(grunt) {
       joinExt: '.src.coffee',
       separator: grunt.util.linefeed
     });
+    var actionCounts = {
+      createdFile: 0,
+      createdMap: 0
+    };
 
     options.separator = grunt.util.normalizelf(options.separator);
 
@@ -40,20 +35,20 @@ module.exports = function(grunt) {
         var paths = createOutputPaths(f.dest);
         // add sourceMapDir to options object
         var fileOptions = _.extend({ sourceMapDir: paths.destDir }, options);
-        writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
+        var writeResult = writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
+        actionCounts.createdFile += writeResult.createdFile;
+        actionCounts.createdMap += writeResult.createdMap;
       } else if (options.join === true) {
-        writeCompiledFile(f.dest, concatInput(validFiles, options));
+        actionCounts.createdFile += writeCompiledFile(f.dest, concatInput(validFiles, options));
       } else {
-        writeCompiledFile(f.dest, concatOutput(validFiles, options));
+        actionCounts.createdFile += writeCompiledFile(f.dest, concatOutput(validFiles, options));
       }
     });
 
-    grunt.log.ok(actionCounts.fileCreated + ' files created.');
-    if (actionCounts.mapCreated > 0) {
-      grunt.log.ok(actionCounts.mapCreated + ' source map files created.');
+    grunt.log.ok(actionCounts.createdFile + ' files created.');
+    if (actionCounts.createdMap > 0) {
+      grunt.log.ok(actionCounts.createdMap + ' source map files created.');
     }
-    resetCounts();
-
   });
 
   var isLiterate = function(ext) {
@@ -224,9 +219,14 @@ module.exports = function(grunt) {
       return;
     }
 
-    writeCompiledFile(paths.dest, output.js);
+    var createdFile = writeCompiledFile(paths.dest, output.js);
     options.sourceMapDir = appendTrailingSlash(options.sourceMapDir);
-    writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
+    var createdMap = writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
+
+    return {
+      createdFile: createdFile,
+      createdMap: createdMap
+    };
   };
 
   var warnOnEmptyFile = function(path) {
@@ -245,14 +245,18 @@ module.exports = function(grunt) {
 
   var writeCompiledFile = function(path, output) {
     if (writeFile(path, output)) {
-      actionCounts.fileCreated++;
       grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created.');
+      return 1;
+    } else {
+      return 0;
     }
   };
   var writeSourceMapFile = function(path, output) {
     if (writeFile(path, output)) {
-      actionCounts.mapCreated++;
       grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created (source map).');
+      return 1;
+    } else {
+      return 0;
     }
   };
 };
