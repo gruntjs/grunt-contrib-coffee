@@ -52,7 +52,7 @@ module.exports = function(grunt) {
   });
 
   var isLiterate = function(ext) {
-    return (ext === ".litcoffee" || ext === ".md");
+    return (ext === '.litcoffee' || ext === '.md');
   };
 
   var removeInvalidFiles = function(files) {
