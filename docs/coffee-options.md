@@ -11,6 +11,12 @@ Type: `boolean`
 
 Compile the JavaScript without the top-level function safety wrapper.
 
+## process
+Type: `Function(content, srcpath)`
+Default: `false`
+
+Process file contents before compilation.
+
 ## join
 Type: `boolean`
 Default: `false`

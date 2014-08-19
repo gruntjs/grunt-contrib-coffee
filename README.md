@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.11.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.11.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) <a href="https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee"><img src="https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master" alt="Build Status: Windows" height="18" /></a>
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -38,6 +38,12 @@ Concatenated files will be joined on this string.
 Type: `boolean`
 
 Compile the JavaScript without the top-level function safety wrapper.
+
+#### process
+Type: `Function(content, srcpath)`
+Default: `false`
+
+Process file contents before compilation.
 
 #### join
 Type: `boolean`
@@ -83,6 +89,18 @@ coffee: {
       'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile and concat into single file
     }
   },
+  
+  compileProcessed: {
+    options: {
+      process: function(content, srcpath) {
+        return content.replace(/text_to_find/g, 'text_to_replace');
+      }
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // replace all text occurrences and compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // replace all text occurrences, compile and concat into single file
+    }
+  }
 
   compileJoined: {
     options: {
@@ -161,4 +179,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Aug 15 2014 11:06:42.*
+*This file was generated on Tue Aug 19 2014 21:16:50.*
