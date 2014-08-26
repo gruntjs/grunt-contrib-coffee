@@ -12,6 +12,7 @@ module.exports = function(grunt) {
   var path = require('path');
   var chalk = require('chalk');
   var _ = require('lodash');
+  var uriPath = require('uri-path');
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
@@ -100,7 +101,7 @@ module.exports = function(grunt) {
 
     options = _.extend({
       generatedFile: path.basename(paths.dest),
-      sourceRoot: mapOptions.sourceRoot,
+      sourceRoot: uriPath(mapOptions.sourceRoot),
       sourceFiles: mapOptions.sourceFiles
     }, options);
 
@@ -149,7 +150,7 @@ module.exports = function(grunt) {
     // We need the sourceMappingURL to be relative to the JS path
     var sourceMappingDir = appendTrailingSlash(path.relative(paths.destDir, options.sourceMapDir));
     // Add sourceMappingURL to file footer
-    output.js = output.js + '\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n';
+    output.js = output.js + '\n//# sourceMappingURL=' + uriPath(sourceMappingDir) + paths.mapFileName + '\n';
   };
 
   var concatInput = function(files, options) {
