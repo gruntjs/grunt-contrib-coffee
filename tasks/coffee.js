@@ -12,12 +12,14 @@ module.exports = function(grunt) {
   var path = require('path');
   var chalk = require('chalk');
   var _ = require('lodash');
+  var convert = require("convert-source-map");
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
       bare: false,
       join: false,
       sourceMap: false,
+      inline: false,
       joinExt: '.src.coffee',
       separator: grunt.util.linefeed
     });
@@ -37,7 +39,9 @@ module.exports = function(grunt) {
         var fileOptions = _.extend({ sourceMapDir: paths.destDir }, options);
         var writeResult = writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
         actionCounts.createdFile += writeResult.createdFile;
-        actionCounts.createdMap += writeResult.createdMap;
+        if (writeResult.createdMap != null) {
+          actionCounts.createdMap += writeResult.createdMap;
+        }
       } else if (options.join === true) {
         actionCounts.createdFile += writeCompiledFile(f.dest, concatInput(validFiles, options));
       } else {
@@ -146,10 +150,12 @@ module.exports = function(grunt) {
   };
 
   var appendFooter = function(output, paths, options) {
-    // We need the sourceMappingURL to be relative to the JS path
-    var sourceMappingDir = appendTrailingSlash(path.relative(paths.destDir, options.sourceMapDir));
-    // Add sourceMappingURL to file footer
-    output.js = output.js + '\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n';
+    if (!options.inline) {
+      // We need the sourceMappingURL to be relative to the JS path
+      var sourceMappingDir = appendTrailingSlash(path.relative(paths.destDir, options.sourceMapDir));
+      // Add sourceMappingURL to file footer
+      output.js = output.js + '\n//# sourceMappingURL=' + sourceMappingDir + paths.mapFileName + '\n';
+    }
   };
 
   var concatInput = function(files, options) {
@@ -219,14 +225,25 @@ module.exports = function(grunt) {
       return;
     }
 
-    var createdFile = writeCompiledFile(paths.dest, output.js);
-    options.sourceMapDir = appendTrailingSlash(options.sourceMapDir);
-    var createdMap = writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
+    if (!options.inline) {
+      var createdFile = writeCompiledFile(paths.dest, output.js);
+      options.sourceMapDir = appendTrailingSlash(options.sourceMapDir);
+      var createdMap = writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
 
-    return {
-      createdFile: createdFile,
-      createdMap: createdMap
-    };
+      return {
+        createdFile: createdFile,
+        createdMap: createdMap
+      };
+    } else {
+      var comment = convert.fromObject(output.v3SourceMap).toComment();
+      output.js += "\n" + comment;
+      var createdFile = writeCompiledFile(paths.dest, output.js);
+      
+      return {
+        createdFile: createdFile
+      };     
+    }
+
   };
 
   var warnOnEmptyFile = function(path) {
