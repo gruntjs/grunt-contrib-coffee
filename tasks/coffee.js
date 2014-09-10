@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   var path = require('path');
   var chalk = require('chalk');
   var _ = require('lodash');
-  var convert = require("convert-source-map");
+  var convert = require('convert-source-map');
 
   grunt.registerMultiTask('coffee', 'Compile CoffeeScript files into JavaScript', function() {
     var options = this.options({
@@ -225,8 +225,9 @@ module.exports = function(grunt) {
       return;
     }
 
+    var createdFile = null;
     if (!options.inline) {
-      var createdFile = writeCompiledFile(paths.dest, output.js);
+      createdFile = writeCompiledFile(paths.dest, output.js);
       options.sourceMapDir = appendTrailingSlash(options.sourceMapDir);
       var createdMap = writeSourceMapFile(options.sourceMapDir + paths.mapFileName, output.v3SourceMap);
 
@@ -236,8 +237,8 @@ module.exports = function(grunt) {
       };
     } else {
       var comment = convert.fromObject(output.v3SourceMap).toComment();
-      output.js += "\n" + comment;
-      var createdFile = writeCompiledFile(paths.dest, output.js);
+      output.js += '\n' + comment;
+      createdFile = writeCompiledFile(paths.dest, output.js);
       
       return {
         createdFile: createdFile
