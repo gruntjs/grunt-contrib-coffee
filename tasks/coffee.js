@@ -173,6 +173,9 @@ module.exports = function(grunt) {
       coffeeOptions.filename = filepath;
       coffeeOptions.literate = isLiterate(path.extname(filepath));
     }
+    else {
+      coffeeOptions.literate = isLiterate(path.extname(options.joinExt));
+    }
 
     try {
       return require('coffee-script').compile(code, coffeeOptions);

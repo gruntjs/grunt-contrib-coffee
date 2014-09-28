@@ -93,8 +93,8 @@ exports.coffee = {
     test.done();
   },
   compileMaps: function(test) {
+    
     test.expect(10);
-
     assertFileEquality(test,
       'tmp/maps/coffee.js',
       'test/expected/maps/coffee.js',
@@ -202,4 +202,34 @@ exports.coffee = {
 
     test.done();
   },
+  compileMDCoffeeMaps: function(test) {
+    test.expect(2);
+
+    assertFileEquality(test,
+      'tmp/litCoffeeMaps/mdcoffee.js',
+      'test/expected/litCoffeeMaps/mdcoffee.js',
+      'Compilation of multiple coffee.md files with maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/litCoffeeMaps/mdcoffee.js.map',
+      'test/expected/litCoffeeMaps/mdcoffee.js.map',
+      'Compilation of multiple coffee.md files with maps should generate map');
+
+    test.done();
+  },
+  compileLitCoffeeMaps: function(test) {
+    test.expect(2);
+
+    assertFileEquality(test,
+      'tmp/litCoffeeMaps/litcoffee.js',
+      'test/expected/litCoffeeMaps/litcoffee.js',
+      'Compilation of multiple .litcoffee files with maps should generate javascript');
+
+    assertFileEquality(test,
+      'tmp/litCoffeeMaps/litcoffee.js.map',
+      'test/expected/litCoffeeMaps/litcoffee.js.map',
+      'Compilation of multiple .litcoffee files with maps should generate map');
+
+    test.done();
+  }
 };
