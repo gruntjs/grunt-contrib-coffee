@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v0.11.1 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
+# grunt-contrib-coffee v0.12.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) <a href="https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee"><img src="https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master" alt="Build Status: Windows" height="18" /></a>
 
 > Compile CoffeeScript files to JavaScript.
 
@@ -131,6 +131,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2014-10-04   v0.12.0   Fixes litcoffee sourcemaps. Updates to CoffeeScript 1.8.0.
  * 2014-08-15   v0.11.1   Fixes summary logging.
  * 2014-08-06   v0.11.0   Adds summary containing number of files created. Move file creation logging to grunt.verbose. Updates Chalk to 0.5.
  * 2014-02-07   v0.10.0   SourceMappingURL calculated correctly
@@ -161,4 +162,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Aug 15 2014 11:06:42.*
+*This file was generated on Sat Oct 04 2014 19:05:52.*
