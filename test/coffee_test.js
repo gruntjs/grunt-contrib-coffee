@@ -172,6 +172,31 @@ exports.coffee = {
 
     test.done();
   },
+  compileProcessed: function(test) {
+    test.expect(4);
+
+    assertFileEquality(test,
+      'tmp/proc/coffee.js',
+      'test/expected/proc/coffee.js',
+      'Should replace all occurrences of "hi" to "hello" and "test" to "check" respectively, and compile coffeescript to javascript');
+
+    assertFileEquality(test,
+      'tmp/proc/litcoffee.js',
+      'test/expected/proc/litcoffee.js',
+      'Should replace all occurrences of "hi" to "hello" and "test" to "check" respectively, and compile literate coffeescript to wrapped javascript');
+
+    assertFileEquality(test,
+      'tmp/proc/litcoffeemd.js',
+      'test/expected/proc/litcoffeemd.js',
+      'Should replace all occurrences of "hi" to "hello" and "test" to "check" respectively, and compile literate coffeescript to wrapped javascript');
+
+    assertFileEquality(test,
+      'tmp/proc/proc.js',
+      'test/expected/proc/proc.js',
+      'Should replace all occurrences of "hi" to "hello" and "test" to "check" respectively, and compile coffeescript files with wrappers and concatenate them into a single javascript file');
+
+    test.done();
+  },
   compileSourceMapDir: function(test) {
     test.expect(2);
 

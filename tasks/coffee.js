@@ -18,6 +18,7 @@ module.exports = function(grunt) {
     var options = this.options({
       bare: false,
       join: false,
+      process: false,
       sourceMap: false,
       joinExt: '.src.coffee',
       separator: grunt.util.linefeed
@@ -175,6 +176,10 @@ module.exports = function(grunt) {
     }
     else {
       coffeeOptions.literate = isLiterate(path.extname(options.joinExt));
+    }
+
+    if (_.isFunction(coffeeOptions.process)) {
+      code = coffeeOptions.process(code, coffeeOptions.filename);
     }
 
     try {

@@ -60,6 +60,19 @@ module.exports = function(grunt) {
           'tmp/bare/concat.js': mixedConcatFixtures
         }
       },
+      compileProcessed: {
+        options: {
+          process: function(content, srcpath) {
+            return content.replace(/hi/g, 'hello').replace(/test/g, 'check');
+          }
+        },
+        files: {
+          'tmp/proc/coffee.js': ['test/fixtures/coffee1.coffee'],
+          'tmp/proc/litcoffee.js': ['test/fixtures/litcoffee.litcoffee'],
+          'tmp/proc/litcoffeemd.js': ['test/fixtures/litcoffee.coffee.md'],
+          'tmp/proc/proc.js': uniformConcatFixtures
+        }
+      },
       compileJoined: {
         options: {
           join: true

@@ -18,6 +18,18 @@ coffee: {
       'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // compile and concat into single file
     }
   },
+  
+  compileProcessed: {
+    options: {
+      process: function(content, srcpath) {
+        return content.replace(/text_to_find/g, 'text_to_replace');
+      }
+    },
+    files: {
+      'path/to/result.js': 'path/to/source.coffee', // replace all text occurrences and compile
+      'path/to/another.js': ['path/to/sources/*.coffee', 'path/to/more/*.coffee'] // replace all text occurrences, compile and concat into single file
+    }
+  }
 
   compileJoined: {
     options: {
