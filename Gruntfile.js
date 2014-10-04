@@ -127,6 +127,24 @@ module.exports = function(grunt) {
           'tmp/nest/1/coffee.js': ['test/fixtures/coffee1.coffee'],
           'tmp/nest/2/coffee.js': ['test/fixtures/coffee1.coffee']
         }
+      },
+      compileMDCoffeeMaps: {
+        options: {
+          sourceMap: true,
+          joinExt: '.src.coffee.md'
+        },
+        files: [{
+          'tmp/litCoffeeMaps/mdcoffee.js':['test/fixtures/mdcoffee.coffee.md', 'test/fixtures/mdcoffee1.coffee.md'],
+        }]
+      },
+      compileLitCoffeeMaps: {
+        options: {
+          sourceMap: true,
+          joinExt: '.src.litcoffee'
+        },
+        files: [{
+          'tmp/litCoffeeMaps/litcoffee.js':['test/fixtures/litcoffee.litcoffee', 'test/fixtures/litcoffee1.litcoffee'],
+        }]
       }
     },
 
