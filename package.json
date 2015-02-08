@@ -1,19 +1,12 @@
 {
   "name": "grunt-contrib-coffee",
-  "description": "Compile CoffeeScript files to JavaScript.",
+  "description": "Compile CoffeeScript files to JavaScript",
   "version": "0.12.0",
-  "homepage": "https://github.com/gruntjs/grunt-contrib-coffee",
   "author": {
     "name": "Grunt Team",
     "url": "http://gruntjs.com/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gruntjs/grunt-contrib-coffee.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gruntjs/grunt-contrib-coffee/issues"
-  },
+  "repository": "gruntjs/grunt-contrib-coffee",
   "licenses": [
     {
       "type": "MIT",
@@ -21,32 +14,32 @@
     }
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "coffee-script": "~1.8.0",
-    "chalk": "~0.5.0",
-    "lodash": "~2.4.1",
+    "chalk": "^0.5.1",
+    "coffee-script": "^1.8.0",
+    "lodash": "^3.1.0",
     "uri-path": "0.0.2"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-nodeunit": "~0.4.1",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-internal": "~0.4.6",
-    "grunt": "~0.4.1"
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-internal": "^0.4.6",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-nodeunit": "^0.4.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin"
   ],
   "files": [
-    "tasks",
-    "LICENSE-MIT"
+    "tasks"
   ]
 }
