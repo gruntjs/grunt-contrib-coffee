@@ -1,11 +1,11 @@
-# grunt-contrib-coffee v0.12.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) <a href="https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee"><img src="https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master" alt="Build Status: Windows" height="18" /></a>
+# grunt-contrib-coffee v0.13.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee)
 
-> Compile CoffeeScript files to JavaScript.
+> Compile CoffeeScript files to JavaScript
 
 
 
 ## Getting Started
-This plugin requires Grunt `~0.4.0`
+This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -131,6 +131,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2015-02-20   v0.13.0   Updates to CoffeeScript 1.9.1.
  * 2014-10-04   v0.12.0   Fixes litcoffee sourcemaps. Updates to CoffeeScript 1.8.0.
  * 2014-08-15   v0.11.1   Fixes summary logging.
  * 2014-08-06   v0.11.0   Adds summary containing number of files created. Move file creation logging to grunt.verbose. Updates Chalk to 0.5.
@@ -162,4 +163,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Sat Oct 04 2014 19:05:52.*
+*This file was generated on Fri Feb 20 2015 15:16:40.*
