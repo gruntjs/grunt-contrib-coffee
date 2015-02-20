@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "chalk": "^0.5.1",
-    "coffee-script": "~1.8.0",
+    "coffee-script": "~1.9.1",
     "lodash": "^3.1.0",
     "uri-path": "0.0.2"
   },
