@@ -53,7 +53,7 @@ module.exports = function(grunt) {
   });
 
   var isLiterate = function(ext) {
-    return (ext === '.litcoffee' || ext === '.md');
+    return ext === '.litcoffee' || ext === '.md';
   };
 
   var removeInvalidFiles = function(files) {
@@ -61,9 +61,8 @@ module.exports = function(grunt) {
       if (!grunt.file.exists(filepath)) {
         grunt.log.warn('Source file "' + filepath + '" not found.');
         return false;
-      } else {
-        return true;
       }
+      return true;
     });
   };
 
@@ -80,9 +79,8 @@ module.exports = function(grunt) {
   var appendTrailingSlash = function(dirname) {
     if (dirname.length > 0 && dirname.slice(-1) !== path.sep) {
       return dirname + path.sep;
-    } else {
-      return dirname;
     }
+    return dirname;
   };
 
   var compileWithMaps = function(files, options, paths) {
@@ -117,9 +115,8 @@ module.exports = function(grunt) {
     if (extensions.length > 1) {
       grunt.fail.warn('Join and sourceMap options require input files share the same extension (found ' + extensions.join(', ') + ').');
       return false;
-    } else {
-      return true;
     }
+    return true;
   };
 
   var createOptionsForJoin = function (files, paths, separator, joinExt) {
@@ -172,8 +169,7 @@ module.exports = function(grunt) {
     if (filepath) {
       coffeeOptions.filename = filepath;
       coffeeOptions.literate = isLiterate(path.extname(filepath));
-    }
-    else {
+    } else {
       coffeeOptions.literate = isLiterate(path.extname(options.joinExt));
     }
 
@@ -241,26 +237,23 @@ module.exports = function(grunt) {
     if (output.length < 1) {
       warnOnEmptyFile(path);
       return false;
-    } else {
-      grunt.file.write(path, output);
-      return true;
     }
+    grunt.file.write(path, output);
+    return true;
   };
 
   var writeCompiledFile = function(path, output) {
     if (writeFile(path, output)) {
       grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created.');
       return 1;
-    } else {
-      return 0;
     }
+    return 0;
   };
   var writeSourceMapFile = function(path, output) {
     if (writeFile(path, output)) {
       grunt.verbose.writeln('File ' + chalk.cyan(path) + ' created (source map).');
       return 1;
-    } else {
-      return 0;
     }
+    return 0;
   };
 };

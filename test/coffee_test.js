@@ -93,7 +93,7 @@ exports.coffee = {
     test.done();
   },
   compileMaps: function(test) {
-    
+
     test.expect(10);
     assertFileEquality(test,
       'tmp/maps/coffee.js',

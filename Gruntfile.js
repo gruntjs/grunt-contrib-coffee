@@ -134,7 +134,7 @@ module.exports = function(grunt) {
           joinExt: '.src.coffee.md'
         },
         files: [{
-          'tmp/litCoffeeMaps/mdcoffee.js':['test/fixtures/mdcoffee.coffee.md', 'test/fixtures/mdcoffee1.coffee.md'],
+          'tmp/litCoffeeMaps/mdcoffee.js': ['test/fixtures/mdcoffee.coffee.md', 'test/fixtures/mdcoffee1.coffee.md']
         }]
       },
       compileLitCoffeeMaps: {
@@ -143,7 +143,7 @@ module.exports = function(grunt) {
           joinExt: '.src.litcoffee'
         },
         files: [{
-          'tmp/litCoffeeMaps/litcoffee.js':['test/fixtures/litcoffee.litcoffee', 'test/fixtures/litcoffee1.litcoffee'],
+          'tmp/litCoffeeMaps/litcoffee.js': ['test/fixtures/litcoffee.litcoffee', 'test/fixtures/litcoffee1.litcoffee']
         }]
       }
     },
