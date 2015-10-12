@@ -6,5 +6,5 @@
     "coffee1.coffee"
   ],
   "names": [],
-  "mappings": "AAAA;AAAA,MAAA,UAAA;;AAAA,EAAM;4BACJ;;AAAA,IAAA,UAAC,CAAA,IAAD,GAAO,MAAP,CAAA;;sBAAA;;MADF,CAAA;AAAA"
+  "mappings": "AAAA;AAAA,MAAA;;EAAM;;;IACJ,UAAC,CAAA,IAAD,GAAO;;;;;AADT"
 }
