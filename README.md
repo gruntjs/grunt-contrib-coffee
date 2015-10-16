@@ -29,36 +29,36 @@ Task targets, files and options may be specified according to the grunt [Configu
 ### Options
 
 #### separator
-Type: `String`
+Type: `String`  
 Default: linefeed
 
 Concatenated files will be joined on this string.
 
 #### bare
-Type: `boolean`
+Type: `Boolean`
 
 Compile the JavaScript without the top-level function safety wrapper.
 
 #### join
-Type: `boolean`
+Type: `Boolean`  
 Default: `false`
 
 When compiling multiple .coffee files into a single .js file, concatenate first.
 
 #### sourceMap
-Type: `boolean`
+Type: `Boolean`  
 Default: `false`
 
 Compile JavaScript and create a .map file linking it to the CoffeeScript source. When compiling multiple .coffee files to a single .js file, concatenation occurs as though the 'join' option is enabled
 
 #### sourceMapDir
-Type: `String`
+Type: `String`  
 Default: (same path as your compiled js files)
 
 Generated source map files will be created here.
 
 #### joinExt
-Type: `String`
+Type: `String`  
 Default: '.src.coffee'
 
 Resulting extension when joining multiple CoffeeScript files.
@@ -163,4 +163,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Feb 20 2015 10:33:14.*
+*This file was generated on Fri Oct 16 2015 18:57:25.*
