@@ -9,17 +9,17 @@
   "repository": "gruntjs/grunt-contrib-coffee",
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">= 0.10.0"
   },
   "main": "tasks/coffee.js",
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
+    "chalk": "~1.0.0",
     "coffee-script": "~1.10.0",
-    "lodash": "^3.1.0",
-    "uri-path": "0.0.2"
+    "lodash": "~4.3.0",
+    "uri-path": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
