@@ -98,7 +98,7 @@ module.exports = function(grunt) {
     if (files.length > 1) {
       mapOptions = createOptionsForJoin(files, paths, options.separator, options.joinExt);
     } else {
-      mapOptions = createOptionsForFile(files[0], paths);
+      mapOptions = createOptionsForFile(files[0], paths, options);
       filepath = files[0];
     }
 
@@ -140,11 +140,11 @@ module.exports = function(grunt) {
     return files.map(grunt.file.read).join(separator);
   };
 
-  var createOptionsForFile = function(file, paths) {
+  var createOptionsForFile = function(file, paths, options) {
     return {
       code: grunt.file.read(file),
       sourceFiles: [path.basename(file)],
-      sourceRoot: appendTrailingSlash(path.relative(paths.destDir, path.dirname(file)))
+      sourceRoot: appendTrailingSlash(path.relative(options.sourceMapDir, path.dirname(file)))
     };
   };
 
