@@ -1,3 +1,10 @@
+v1.0.0:
+  date: 2016-02-15
+  changes:
+    - Updates to CoffeeScript 1.10.0.
+    - Update other dependencies.
+    - Use `options.sourceMapDir` when creating `sourceRoot`.
+    - Logs information if no valid files were matched.
 v0.13.0:
   date: 2015-02-20
   changes:

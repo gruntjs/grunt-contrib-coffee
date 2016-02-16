@@ -1,11 +1,10 @@
-# grunt-contrib-coffee v0.13.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee/branch/master)
+# grunt-contrib-coffee v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee/branch/master)
 
 > Compile CoffeeScript files to JavaScript
 
 
 
 ## Getting Started
-This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -19,7 +18,8 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-contrib-coffee');
 ```
 
-*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-contrib-coffee/tree/grunt-0.3-stable).*
+*This plugin was designed to work with Grunt >= 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.3.2](https://github.com/gruntjs/grunt-contrib-coffee/tree/grunt-0.3-stable).*
+
 
 
 ## Coffee task
@@ -131,6 +131,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2016-02-15   v1.0.0   Updates to CoffeeScript 1.10.0. Update other dependencies. Use `options.sourceMapDir` when creating `sourceRoot`. Logs information if no valid files were matched.
  * 2015-02-20   v0.13.0   Updates to CoffeeScript 1.9.1.
  * 2014-10-04   v0.12.0   Fixes litcoffee sourcemaps. Updates to CoffeeScript 1.8.0.
  * 2014-08-15   v0.11.1   Fixes summary logging.
@@ -163,4 +164,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Oct 16 2015 18:57:25.*
+*This file was generated on Mon Feb 15 2016 19:16:25.*
