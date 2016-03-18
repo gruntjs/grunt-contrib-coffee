@@ -22,23 +22,23 @@ v0.11.0:
   date: 2014-08-06
   changes:
     - Adds summary containing number of files created.
-    - Move file creation logging to grunt.verbose.
-    - Updates Chalk to 0.5.
+    - Move file creation logging to `grunt.verbose`.
+    - Updates chalk to 0.5.
 v0.10.0:
   date: 2014-02-07
   changes:
-    - SourceMappingURL calculated correctly
+    - '`sourceMappingURL` calculated correctly.'
 v0.9.0:
   date: 2014-01-29
   changes:
     - Source mapping fixes.
-    - Update coffee-script to 1.7.0
-    - Use lodash directly instead of deprecated grunt.util._
+    - Update CoffeeScript to 1.7.0.
+    - Use lodash directly instead of deprecated `grunt.util._`.
 v0.8.2:
   date: 2014-01-17
   changes:
-    - Force coffeescript 1.6.3
-    - Use new sourceMappingUrl syntax.
+    - Force CoffeeScript 1.6.3.
+    - Use new `sourceMappingUrl` syntax.
 v0.8.1:
   date: 2014-01-17
   changes:
@@ -46,16 +46,16 @@ v0.8.1:
 v0.8.0:
   date: 2013-12-24
   changes:
-    - Support sourceMapDir
+    - Support `sourceMapDir`.
 v0.7.0:
   date: 2013-04-19
   changes:
-    - Place Sourcemaps at bottom of file
-    - Change extension for Sourcemaps from .maps to .js.map
+    - Place source maps at bottom of file.
+    - Change extension for source maps from .maps to .js.map.
 v0.6.7:
   date: 2013-04-18
   changes:
-    - Improved error reporting
+    - Improved error reporting.
 v0.6.6:
   date: 2013-04-08
   changes:
@@ -63,11 +63,11 @@ v0.6.6:
 v0.6.5:
   date: 2013-04-05
   changes:
-    - Improved error reporting
+    - Improved error reporting.
 v0.6.4:
   date: 2013-03-22
   changes:
-    - Sourcemap support
+    - Sourcemap support.
 v0.6.3:
   date: 2013-03-19
   changes:
@@ -75,21 +75,21 @@ v0.6.3:
 v0.6.2:
   date: 2013-03-18
   changes:
-    - Bump to CoffeeScript 1.6.2
+    - Bump to CoffeeScript 1.6.2.
 v0.6.1:
   date: 2013-03-18
   changes:
-    - Support `join` option
+    - Support `join` option.
 v0.6.0:
   date: 2013-03-06
   changes:
-    - Bump to CoffeeScript 1.6
-    - Support literate CoffeeScript extension coffee.md
+    - Bump to CoffeeScript 1.6.
+    - Support literate CoffeeScript extension coffee.md.
 v0.5.0:
   date: 2013-02-25
   changes:
-    - Bump to CoffeeScript 1.5
-    - Support literate CoffeeScript (.litcoffee)
+    - Bump to CoffeeScript 1.5.
+    - Support literate CoffeeScript (.litcoffee).
 v0.4.0:
   date: 2013-02-15
   changes:
@@ -104,7 +104,7 @@ v0.4.0rc5:
   date: 2013-01-09
   changes:
     - Updating to work with grunt v0.4.0rc5.
-    - Switching to this.filesSrc api.
+    - Switching to `this.filesSrc` API.
 v0.4.0a:
   date: 2012-12-15
   changes:

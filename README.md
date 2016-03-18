@@ -135,25 +135,25 @@ For more examples on how to use the `expand` API to manipulate the default dynam
  * 2015-02-20   v0.13.0   Updates to CoffeeScript 1.9.1.
  * 2014-10-04   v0.12.0   Fixes litcoffee sourcemaps. Updates to CoffeeScript 1.8.0.
  * 2014-08-15   v0.11.1   Fixes summary logging.
- * 2014-08-06   v0.11.0   Adds summary containing number of files created. Move file creation logging to grunt.verbose. Updates Chalk to 0.5.
- * 2014-02-07   v0.10.0   SourceMappingURL calculated correctly
- * 2014-01-29   v0.9.0   Source mapping fixes. Update coffee-script to 1.7.0 Use lodash directly instead of deprecated grunt.util._
- * 2014-01-17   v0.8.2   Force coffeescript 1.6.3 Use new sourceMappingUrl syntax.
+ * 2014-08-06   v0.11.0   Adds summary containing number of files created. Move file creation logging to `grunt.verbose`. Updates chalk to 0.5.
+ * 2014-02-07   v0.10.0   `sourceMappingURL` calculated correctly.
+ * 2014-01-29   v0.9.0   Source mapping fixes. Update CoffeeScript to 1.7.0. Use lodash directly instead of deprecated `grunt.util._`.
+ * 2014-01-17   v0.8.2   Force CoffeeScript 1.6.3. Use new `sourceMappingUrl` syntax.
  * 2014-01-17   v0.8.1   Fix sourcemap regression.
- * 2013-12-24   v0.8.0   Support sourceMapDir
- * 2013-04-19   v0.7.0   Place Sourcemaps at bottom of file Change extension for Sourcemaps from .maps to .js.map
- * 2013-04-18   v0.6.7   Improved error reporting
+ * 2013-12-24   v0.8.0   Support `sourceMapDir`.
+ * 2013-04-19   v0.7.0   Place source maps at bottom of file. Change extension for source maps from .maps to .js.map.
+ * 2013-04-18   v0.6.7   Improved error reporting.
  * 2013-04-08   v0.6.6   Fix regression with single-file compilation.
- * 2013-04-05   v0.6.5   Improved error reporting
- * 2013-03-22   v0.6.4   Sourcemap support
+ * 2013-04-05   v0.6.5   Improved error reporting.
+ * 2013-03-22   v0.6.4   Sourcemap support.
  * 2013-03-19   v0.6.3   Increase error logging verbosity.
- * 2013-03-18   v0.6.2   Bump to CoffeeScript 1.6.2
- * 2013-03-18   v0.6.1   Support `join` option
- * 2013-03-06   v0.6.0   Bump to CoffeeScript 1.6 Support literate CoffeeScript extension coffee.md
- * 2013-02-25   v0.5.0   Bump to CoffeeScript 1.5 Support literate CoffeeScript (.litcoffee)
+ * 2013-03-18   v0.6.2   Bump to CoffeeScript 1.6.2.
+ * 2013-03-18   v0.6.1   Support `join` option.
+ * 2013-03-06   v0.6.0   Bump to CoffeeScript 1.6. Support literate CoffeeScript extension coffee.md.
+ * 2013-02-25   v0.5.0   Bump to CoffeeScript 1.5. Support literate CoffeeScript (.litcoffee).
  * 2013-02-15   v0.4.0   First official release for Grunt 0.4.0.
  * 2013-01-23   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions. Bump coffeescript dependency to 1.4.
- * 2013-01-09   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.filesSrc api.
+ * 2013-01-09   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to `this.filesSrc` API.
  * 2012-12-15   v0.4.0a   Conversion to grunt v0.4 conventions. Remove experimental destination wildcards.
  * 2012-10-12   v0.3.2   Rename grunt-contrib-lib dep to grunt-lib-contrib.
  * 2012-09-25   v0.3.1   Don't fail when there are no files.
@@ -164,4 +164,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Mon Feb 15 2016 19:16:25.*
+*This file was generated on Fri Mar 18 2016 19:15:25.*
