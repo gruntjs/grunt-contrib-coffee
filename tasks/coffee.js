@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 
     this.files.forEach(function(f) {
       var validFiles = removeInvalidFiles(f);
-      
+
       if (validFiles.length === 0) {
         grunt.log.warn('Destination ' + chalk.cyan(f.dest) + ' not written because no source files were found.');
         return;
