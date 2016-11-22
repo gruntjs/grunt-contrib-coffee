@@ -20,6 +20,7 @@ module.exports = function(grunt) {
       join: false,
       sourceMap: false,
       joinExt: '.src.coffee',
+      mapExt: '.js.map',
       separator: grunt.util.linefeed
     });
     var actionCounts = {
@@ -38,7 +39,7 @@ module.exports = function(grunt) {
       }
 
       if (options.sourceMap === true) {
-        var paths = createOutputPaths(f.dest);
+        var paths = createOutputPaths(f.dest, options);
         // add sourceMapDir to options object
         var fileOptions = _.extend({ sourceMapDir: paths.destDir }, options);
         var writeResult = writeFileAndMap(paths, compileWithMaps(validFiles, fileOptions, paths), fileOptions);
@@ -71,13 +72,13 @@ module.exports = function(grunt) {
     });
   };
 
-  var createOutputPaths = function(destination) {
+  var createOutputPaths = function(destination, options) {
     var fileName = path.basename(destination, path.extname(destination));
     return {
       dest: destination,
       destName: fileName,
       destDir: appendTrailingSlash(path.dirname(destination)),
-      mapFileName: fileName + '.js.map'
+      mapFileName: fileName + options.mapExt
     };
   };
 
