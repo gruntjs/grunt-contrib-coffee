@@ -131,6 +131,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2017-02-24   v1.1.0   Updates to CoffeeScript 1.12.4.
  * 2016-02-15   v1.0.0   Updates to CoffeeScript 1.10.0. Update other dependencies. Use `options.sourceMapDir` when creating `sourceRoot`. Logs information if no valid files were matched.
  * 2015-02-20   v0.13.0   Updates to CoffeeScript 1.9.1.
  * 2014-10-04   v0.12.0   Fixes litcoffee sourcemaps. Updates to CoffeeScript 1.8.0.
