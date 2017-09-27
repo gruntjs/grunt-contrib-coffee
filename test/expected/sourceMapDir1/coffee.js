@@ -2,7 +2,7 @@
   var HelloWorld;
 
   HelloWorld = (function() {
-    function HelloWorld() {}
+    class HelloWorld {};
 
     HelloWorld.test = 'test';
 

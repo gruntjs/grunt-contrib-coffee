@@ -1,4 +1,4 @@
-# grunt-contrib-coffee v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee/branch/master)
+# grunt-contrib-coffee v2.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-coffee.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-coffee) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/ns3waxwcw8ddcr3f/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-coffee/branch/master)
 
 > Compile CoffeeScript files to JavaScript
 
@@ -131,6 +131,7 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 ## Release History
 
+ * 2017-09-27   v2.0.0   Updates to CoffeeScript 2.0.1.
  * 2016-02-15   v1.0.0   Updates to CoffeeScript 1.10.0. Update other dependencies. Use `options.sourceMapDir` when creating `sourceRoot`. Logs information if no valid files were matched.
  * 2015-02-20   v0.13.0   Updates to CoffeeScript 1.9.1.
  * 2014-10-04   v0.12.0   Fixes litcoffee sourcemaps. Updates to CoffeeScript 1.8.0.
@@ -164,4 +165,4 @@ For more examples on how to use the `expand` API to manipulate the default dynam
 
 Task submitted by [Eric Woroshow](http://ericw.ca/)
 
-*This file was generated on Fri Mar 18 2016 19:15:25.*
+*This file was generated on Wed Sep 27 2017 16:29:13.*

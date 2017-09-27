@@ -6,5 +6,8 @@
     "coffee1.coffee"
   ],
   "names": [],
-  "mappings": "AAAA;AAAA,MAAA;;EAAM;;;IACJ,UAAC,CAAA,IAAD,GAAO;;;;;AADT"
+  "mappings": "AAAA;AAAA,MAAA;;EAAM;IAAN,MAAA,WAAA,CAAA;;IACE,UAAC,CAAA,IAAD,GAAO;;;;;AADT",
+  "sourcesContent": [
+    "class HelloWorld\n  @test: 'test'"
+  ]
 }

@@ -6,5 +6,8 @@
     "coffeeBareJoin.src.coffee"
   ],
   "names": [],
-  "mappings": "AAAA,IAAA;;AAAM;;;EACJ,UAAC,CAAA,IAAD,GAAO;;;;;;AACT,OAAO,CAAC,GAAR,CAAY,IAAZ"
+  "mappings": "AAAA,IAAA;;AAAM;EAAN,MAAA,WAAA,CAAA;;EACE,UAAC,CAAA,IAAD,GAAO;;;;;;AACT,OAAO,CAAC,GAAR,CAAY,IAAZ",
+  "sourcesContent": [
+    "class HelloWorld\n  @test: 'test'\r\nconsole.log('hi')"
+  ]
 }

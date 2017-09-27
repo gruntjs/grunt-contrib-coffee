@@ -1,3 +1,7 @@
+v2.0.0:
+  date: 2017-09-27
+  changes:
+    - Updates to CoffeeScript 2.0.1.
 v1.0.0:
   date: 2016-02-15
   changes:
