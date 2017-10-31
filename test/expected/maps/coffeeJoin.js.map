@@ -6,5 +6,8 @@
     "coffeeJoin.src.coffee"
   ],
   "names": [],
-  "mappings": "AAAA;AAAA,MAAA;;EAAM;;;IACJ,UAAC,CAAA,IAAD,GAAO;;;;;;EACT,OAAO,CAAC,GAAR,CAAY,IAAZ;AAFA"
+  "mappings": "AAAA;AAAA,MAAA;;EAAM;IAAN,MAAA,WAAA,CAAA;;IACE,UAAC,CAAA,IAAD,GAAO;;;;;;EACT,OAAO,CAAC,GAAR,CAAY,IAAZ;AAFA",
+  "sourcesContent": [
+    "class HelloWorld\n  @test: 'test'\nconsole.log('hi')"
+  ]
 }

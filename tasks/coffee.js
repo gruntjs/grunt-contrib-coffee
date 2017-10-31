@@ -179,7 +179,7 @@ module.exports = function(grunt) {
     }
 
     try {
-      return require('coffee-script').compile(code, coffeeOptions);
+      return require('coffeescript').compile(code, coffeeOptions);
     } catch (e) {
       if (e.location == null ||
           e.location.first_column == null ||

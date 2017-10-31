@@ -2,7 +2,7 @@
   var HelloWorld;
 
   HelloWorld = (function() {
-    function HelloWorld() {}
+    class HelloWorld {};
 
     HelloWorld.test = 'test';
 
@@ -18,9 +18,11 @@
 }).call(this);
 
 (function() {
+  // Begin function declaration.
   var sayHello;
 
   sayHello = function() {
+    // Print a greeting.
     return console.log('hi');
   };
 

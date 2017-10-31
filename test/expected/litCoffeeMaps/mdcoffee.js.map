@@ -6,5 +6,8 @@
     "mdcoffee.src.coffee.md"
   ],
   "names": [],
-  "mappings": "AAEI;AAAA,MAAA;;EAAA,QAAA,GAAW,SAAA;WAIT,OAAO,CAAC,GAAR,CAAY,IAAZ;EAJS;;EAQX,QAAA,GAAW,SAAA;WAIT,OAAO,CAAC,GAAR,CAAY,qDAAZ;EAJS;AARX"
+  "mappings": "AAAA;EAAA;AAAA,MAAA;;EAEI,QAAA,GAAW,QAAA,CAAA,CAAA,EAAA;;WAIT,OAAO,CAAC,GAAR,CAAY,IAAZ;EAJS,EAFf;;;EAUI,QAAA,GAAW,QAAA,CAAA,CAAA,EAAA;;WAIT,OAAO,CAAC,GAAR,CAAY,qDAAZ;EAJS;AAVf",
+  "sourcesContent": [
+    "Begin function declaration.\n\n    sayHello = ->\n\nPrint a greeting.\n\n      console.log 'hi'\n\nBegin function declaration.\n\n    sayHello = ->\n\nPrint a greeting.\n\n      console.log 'I like to annotate my source with literated coffee.'\n"
+  ]
 }

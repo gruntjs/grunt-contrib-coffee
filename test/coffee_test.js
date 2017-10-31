@@ -6,6 +6,7 @@ function readFile(file) {
   var contents = grunt.file.read(file);
   if (process.platform === 'win32') {
     contents = contents.replace(/\r\n/g, '\n');
+    contents = contents.replace(/\\r\\n/g, '\\n');
   }
   return contents;
 }
