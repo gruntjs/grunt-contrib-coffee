@@ -8,7 +8,7 @@
 
     return HelloWorld;
 
-  })();
+  }).call(this);
 
   console.log('hi');
 

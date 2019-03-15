@@ -7,4 +7,4 @@ HelloWorld = (function() {
 
   return HelloWorld;
 
-})();
+}).call(this);
