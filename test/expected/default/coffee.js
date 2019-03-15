@@ -8,6 +8,6 @@
 
     return HelloWorld;
 
-  })();
+  }).call(this);
 
 }).call(this);

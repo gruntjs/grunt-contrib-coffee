@@ -7,6 +7,6 @@ HelloWorld = (function() {
 
   return HelloWorld;
 
-})();
+}).call(this);
 
 //# sourceMappingURL=coffeeBare.js.map
