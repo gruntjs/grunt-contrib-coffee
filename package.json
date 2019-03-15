@@ -9,7 +9,7 @@
   "repository": "gruntjs/grunt-contrib-coffee",
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8"
   },
   "main": "tasks/coffee.js",
   "scripts": {
