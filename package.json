@@ -17,12 +17,12 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "coffeescript": "^2.0.1",
-    "lodash": "^4.6.1",
+    "coffeescript": "^2.3.2",
+    "lodash": "^4.17.11",
     "uri-path": "^1.0.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.0",
+    "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-internal": "^3.1.0",
     "grunt-contrib-jshint": "^2.0.0",
