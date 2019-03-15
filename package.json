@@ -16,17 +16,17 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "chalk": "^1.1.1",
+    "chalk": "^2.4.2",
     "coffeescript": "^2.0.1",
     "lodash": "^4.6.1",
     "uri-path": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "^1.0.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-internal": "^1.4.1",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0"
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-internal": "^3.1.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-nodeunit": "^2.0.0"
   },
   "peerDependencies": {
     "grunt": ">=0.4.5"
