@@ -8,6 +8,6 @@
   "names": [],
   "mappings": "AAAA,IAAA;;AAAM;EAAN,MAAA,WAAA,CAAA;;EACE,UAAC,CAAA,IAAD,GAAO;;;;;;AACT,OAAO,CAAC,GAAR,CAAY,IAAZ",
   "sourcesContent": [
-    "class HelloWorld\n  @test: 'test'\nconsole.log('hi')"
+    "class HelloWorld\r\n  @test: 'test'\r\nconsole.log('hi')"
   ]
 }

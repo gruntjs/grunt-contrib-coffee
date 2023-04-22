@@ -6,8 +6,8 @@
     "litcoffee.litcoffee"
   ],
   "names": [],
-  "mappings": "AAAA;EAAA;AAAA,MAAA;;EAEI,QAAA,GAAW,QAAA,CAAA,CAAA,EAAA;;WAIT,OAAO,CAAC,GAAR,CAAY,IAAZ;EAJS;AAFf",
+  "mappings": "AAA+B;EAAA;AAAA,MAAA;;EAE3B,QAAA,GAAY,QAAA,CAAA,CAAA,EAAA;;WAIV,OAAO,CAAC,GAAR,CAAa,IAAb;EAJU;AAFe",
   "sourcesContent": [
-    "Begin function declaration.\n\n    sayHello = ->\n\nPrint a greeting.\n\n      console.log 'hi'\n"
+    "Begin function declaration.\r\n\r\n    sayHello = ->\r\n\r\nPrint a greeting.\r\n\r\n      console.log 'hi'\r\n"
   ]
 }
